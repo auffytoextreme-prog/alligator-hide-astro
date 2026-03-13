@@ -18,7 +18,7 @@ const {
   description,
   canonical,
   noindex = false,
-  image = 'https://www.alligatorhideuy.com/og-image.jpg',
+  image = 'https://www.alligatorhideuy.com/og-image.webp',
 } = Astro.props;
 
 const siteUrl = 'https://www.alligatorhideuy.com';
@@ -53,9 +53,12 @@ const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
-    <!-- Fonts -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://api.emailjs.com" />
+
+    <!-- Fonts -->
     <link
       rel="preload"
       as="style"
