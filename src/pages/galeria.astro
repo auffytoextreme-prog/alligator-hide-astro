@@ -1,0 +1,249 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import gallery1 from '@/assets/gallery-1.jpg';
+import gallery2 from '@/assets/gallery-2.jpg';
+import gallery3 from '@/assets/gallery-3.jpg';
+import gallery4 from '@/assets/gallery-4.jpg';
+
+const galleryItems = [
+  { id: 1, image: gallery1, title: 'Aplicación profesional', category: 'Techos', description: 'Aplicación de sistema AlligatorHide sobre superficie de hormigón.' },
+  { id: 2, image: gallery2, title: 'Terraza residencial', category: 'Terrazas', description: 'Impermeabilización completa de terraza en vivienda particular.' },
+  { id: 3, image: gallery3, title: 'Nave industrial', category: 'Comercial', description: 'Proyecto de impermeabilización para edificio comercial.' },
+  { id: 4, image: gallery4, title: 'Control de calidad', category: 'Proceso', description: 'Inspección técnica post-aplicación del sistema.' },
+  { id: 5, image: gallery1, title: 'Techo plano comercial', category: 'Techos', description: 'Sistema aplicado en edificio corporativo.' },
+  { id: 6, image: gallery3, title: 'Cubierta metálica', category: 'Techos', description: 'Impermeabilización sobre estructura metálica.' },
+  { id: 7, image: gallery2, title: 'Balcón residencial', category: 'Terrazas', description: 'Protección de balcón con exposición solar.' },
+  { id: 8, image: gallery4, title: 'Seguimiento técnico', category: 'Proceso', description: 'Visita de control y mantenimiento.' },
+];
+
+const categories = ['Todos', 'Techos', 'Terrazas', 'Comercial', 'Proceso'];
+---
+
+<Layout
+  title="Galería de Proyectos de Impermeabilización"
+  description="Vea nuestros proyectos realizados: techos, terrazas, cubiertas industriales y más. Aplicación profesional del sistema AlligatorHide en Montevideo, Uruguay."
+  canonical="/galeria"
+>
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 bg-secondary pattern-crocodile">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <span class="inline-block text-primary-foreground text-sm font-semibold uppercase tracking-wider mb-4">
+          Nuestro trabajo
+        </span>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-secondary-foreground mb-6">
+          Galería de proyectos
+        </h1>
+        <p class="text-xl text-secondary-foreground/70 leading-relaxed">
+          Conozca algunos de nuestros trabajos realizados en techos, terrazas y otras superficies.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter -->
+  <section class="py-8 bg-background border-b border-border">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap gap-3" id="gallery-filters">
+        {categories.map((category, i) => (
+          <button
+            data-gallery-filter={category}
+            class={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
+              i === 0
+                ? 'bg-primary text-primary-foreground'
+                : 'bg-muted text-muted-foreground hover:bg-muted/80'
+            }`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="section-padding bg-background">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="gallery-grid">
+        {galleryItems.map((item) => (
+          <div
+            class="group relative aspect-[4/3] overflow-hidden rounded-xl cursor-pointer card-premium"
+            data-gallery-item
+            data-category={item.category}
+            data-title={item.title}
+            data-description={item.description}
+          >
+            <Image
+              src={item.image}
+              alt={item.title}
+              width={400}
+              height={300}
+              format="webp"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="w-12 h-12 bg-primary-foreground/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                <svg class="w-6 h-6 text-secondary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+              </div>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <span class="text-primary-foreground/80 text-xs uppercase tracking-wider">{item.category}</span>
+              <h3 class="text-secondary-foreground font-semibold mt-1">{item.title}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="gallery-modal" class="fixed inset-0 z-50 bg-secondary/95 flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true">
+    <div class="bg-card rounded-2xl overflow-hidden max-w-4xl w-full shadow-2xl relative" id="gallery-modal-content">
+      <button
+        id="gallery-close"
+        class="absolute top-4 right-4 z-10 w-9 h-9 bg-secondary/60 backdrop-blur-sm text-secondary-foreground hover:bg-secondary transition-colors rounded-full flex items-center justify-center"
+        aria-label="Cerrar"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+      </button>
+      <button
+        id="gallery-prev"
+        class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-secondary/60 backdrop-blur-sm text-secondary-foreground hover:bg-secondary transition-colors rounded-full flex items-center justify-center"
+        aria-label="Anterior"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6" /></svg>
+      </button>
+      <button
+        id="gallery-next"
+        class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-secondary/60 backdrop-blur-sm text-secondary-foreground hover:bg-secondary transition-colors rounded-full flex items-center justify-center"
+        aria-label="Siguiente"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6" /></svg>
+      </button>
+      <img id="gallery-modal-img" src="" alt="" class="w-full aspect-video object-cover" />
+      <div class="p-6 lg:p-8">
+        <span id="gallery-modal-category" class="text-primary text-sm font-medium uppercase tracking-wider"></span>
+        <h3 id="gallery-modal-title" class="font-display text-2xl font-bold text-foreground mt-2 mb-3"></h3>
+        <p id="gallery-modal-desc" class="text-muted-foreground"></p>
+        <p id="gallery-modal-counter" class="text-muted-foreground/50 text-xs mt-4"></p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  function initGallery() {
+    const filters = document.querySelectorAll<HTMLButtonElement>('[data-gallery-filter]');
+    const items = document.querySelectorAll<HTMLElement>('[data-gallery-item]');
+    const modal = document.getElementById('gallery-modal');
+    const modalImg = document.getElementById('gallery-modal-img') as HTMLImageElement;
+    const modalTitle = document.getElementById('gallery-modal-title');
+    const modalDesc = document.getElementById('gallery-modal-desc');
+    const modalCategory = document.getElementById('gallery-modal-category');
+    const modalCounter = document.getElementById('gallery-modal-counter');
+    const modalContent = document.getElementById('gallery-modal-content');
+    const closeBtn = document.getElementById('gallery-close');
+    const prevBtn = document.getElementById('gallery-prev');
+    const nextBtn = document.getElementById('gallery-next');
+
+    if (!modal) return;
+
+    let activeCategory = 'Todos';
+    let selectedIndex = -1;
+    let visibleItems: HTMLElement[] = [];
+
+    function updateFilter(category: string) {
+      activeCategory = category;
+      filters.forEach(f => {
+        const isActive = f.dataset.galleryFilter === category;
+        f.className = `px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
+          isActive ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/80'
+        }`;
+      });
+
+      items.forEach(item => {
+        const show = category === 'Todos' || item.dataset.category === category;
+        item.style.display = show ? '' : 'none';
+      });
+
+      visibleItems = Array.from(items).filter(item =>
+        activeCategory === 'Todos' || item.dataset.category === activeCategory
+      );
+    }
+
+    function openModal(index: number) {
+      selectedIndex = index;
+      const item = visibleItems[index];
+      if (!item) return;
+
+      const img = item.querySelector('img');
+      if (img && modalImg) modalImg.src = img.src;
+      if (modalImg) modalImg.alt = item.dataset.title || '';
+      if (modalTitle) modalTitle.textContent = item.dataset.title || '';
+      if (modalDesc) modalDesc.textContent = item.dataset.description || '';
+      if (modalCategory) modalCategory.textContent = item.dataset.category || '';
+      if (modalCounter) modalCounter.textContent = `${index + 1} / ${visibleItems.length} · Usa las flechas o ← → para navegar`;
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+      selectedIndex = -1;
+    }
+
+    function goNext() {
+      if (selectedIndex === -1) return;
+      openModal((selectedIndex + 1) % visibleItems.length);
+    }
+
+    function goPrev() {
+      if (selectedIndex === -1) return;
+      openModal((selectedIndex - 1 + visibleItems.length) % visibleItems.length);
+    }
+
+    // Filters
+    filters.forEach(f => {
+      f.addEventListener('click', () => updateFilter(f.dataset.galleryFilter || 'Todos'));
+    });
+
+    // Click to open
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        const index = visibleItems.indexOf(item);
+        if (index !== -1) openModal(index);
+      });
+    });
+
+    // Close
+    closeBtn?.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+    modalContent?.addEventListener('click', (e) => e.stopPropagation());
+
+    // Navigation
+    prevBtn?.addEventListener('click', goPrev);
+    nextBtn?.addEventListener('click', goNext);
+
+    // Keyboard
+    document.addEventListener('keydown', (e) => {
+      if (selectedIndex === -1) return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowRight') goNext();
+      if (e.key === 'ArrowLeft') goPrev();
+    });
+
+    // Initial setup
+    updateFilter('Todos');
+  }
+
+  initGallery();
+  document.addEventListener('astro:page-load', initGallery);
+</script>

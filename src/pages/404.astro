@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Página no encontrada | AlligatorHide Uruguay"
+  description="La página que busca no existe."
+  noindex={true}
+>
+  <div class="flex min-h-[80vh] items-center justify-center bg-muted">
+    <div class="text-center px-4">
+      <h1 class="mb-4 text-7xl font-display font-bold text-primary">404</h1>
+      <p class="mb-6 text-xl text-muted-foreground">La página que busca no fue encontrada.</p>
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg>
+        Volver al inicio
+      </a>
+    </div>
+  </div>
+</Layout>

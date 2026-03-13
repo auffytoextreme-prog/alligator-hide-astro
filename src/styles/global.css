@@ -1,0 +1,270 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AlligatorHide Premium Design System */
+
+@layer base {
+  :root {
+    /* Off-white background for premium feel */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 11%;
+
+    /* Cards - pure white for contrast */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 11%;
+
+    /* Primary - Deep Forest Green (Alligator) */
+    --primary: 153 45% 15%;
+    --primary-foreground: 40 20% 97%;
+
+    /* Secondary - Charcoal */
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 40 20% 97%;
+
+    /* Muted - Soft gray */
+    --muted: 40 10% 93%;
+    --muted-foreground: 0 0% 40%;
+
+    /* Accent - Water Blue for technical elements */
+    --accent: 197 50% 37%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders - very subtle */
+    --border: 40 10% 88%;
+    --input: 40 10% 88%;
+    --ring: 153 45% 15%;
+
+    --radius: 0.75rem;
+
+    /* Custom colors */
+    --charcoal: 0 0% 11%;
+    --off-white: 40 20% 97%;
+    --forest-green: 153 45% 15%;
+    --water-blue: 197 50% 37%;
+    --soft-cream: 40 30% 95%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 11% / 0.85) 0%, hsl(0 0% 11% / 0.6) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(40 20% 97%) 100%);
+    --gradient-premium: linear-gradient(135deg, hsl(153 45% 15%) 0%, hsl(153 45% 22%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px -2px hsl(0 0% 0% / 0.08);
+    --shadow-md: 0 4px 20px -4px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 8px 40px -8px hsl(0 0% 0% / 0.12);
+    --shadow-glow: 0 0 30px hsl(153 45% 15% / 0.15);
+    --shadow-glow-accent: 0 0 30px hsl(197 50% 37% / 0.15);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1 {
+    @apply font-display font-bold;
+    letter-spacing: -0.025em;
+  }
+
+  h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Premium Button Variants */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow-md hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-300;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-primary-foreground transition-all duration-300;
+  }
+
+  .btn-hero {
+    @apply bg-primary text-primary-foreground px-8 py-4 text-lg font-medium hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5;
+  }
+
+  .btn-hero-secondary {
+    @apply bg-white/10 backdrop-blur-sm text-white border border-white/30 px-8 py-4 text-lg font-medium hover:bg-white/20 transition-all duration-300;
+  }
+
+  /* Premium Cards */
+  .card-premium {
+    @apply bg-card rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-border/50;
+  }
+
+  .card-guarantee {
+    @apply bg-gradient-to-br from-primary to-primary/80 text-primary-foreground rounded-2xl p-8 shadow-lg;
+  }
+
+  /* Section Styling — generous breathing room for premium feel */
+  .section-padding {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+
+  .container-narrow {
+    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Subtle crocodile pattern overlay */
+  .pattern-crocodile {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231B4332' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Link underline animation */
+  .link-underline {
+    @apply relative inline-block;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-current scale-x-0 origin-right transition-transform duration-300;
+  }
+
+  .link-underline:hover::after {
+    @apply scale-x-100 origin-left;
+  }
+
+  /* Fade animations */
+  .animate-fade-up {
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Stagger delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+
+  /* Scroll-triggered animations — smooth, unhurried for premium feel */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .scroll-animate.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scroll-animate.delay-100 { transition-delay: 100ms; }
+  .scroll-animate.delay-200 { transition-delay: 200ms; }
+  .scroll-animate.delay-300 { transition-delay: 300ms; }
+  .scroll-animate.delay-400 { transition-delay: 400ms; }
+  .scroll-animate.delay-500 { transition-delay: 500ms; }
+  .scroll-animate.delay-600 { transition-delay: 600ms; }
+
+  /* Marquee for TrustBadges mobile */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  .animate-marquee:hover,
+  .animate-marquee:focus-within {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee { animation: none; }
+    .scroll-animate { transition: none; opacity: 1; transform: none; }
+    .animate-fade-up, .animate-fade-in { animation: none; opacity: 1; transform: none; }
+    .animate-bounce { animation: none; }
+    .animate-drift-a, .animate-drift-b, .animate-drift-c { animation: none; }
+    .animate-pulse-subtle { animation: none; }
+  }
+
+  /* Subtle pulse for CTA glow rings */
+  @keyframes pulseSubtle {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  .animate-pulse-subtle {
+    animation: pulseSubtle 3s ease-in-out infinite;
+  }
+
+  /* Slow floating drift for decorative orbs */
+  @keyframes driftA {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, -20px) scale(1.05); }
+  }
+  @keyframes driftB {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-25px, 15px) scale(1.08); }
+  }
+  @keyframes driftC {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+  }
+  .animate-drift-a { animation: driftA 22s ease-in-out infinite; }
+  .animate-drift-b { animation: driftB 28s ease-in-out infinite; }
+  .animate-drift-c { animation: driftC 18s ease-in-out infinite; }
+
+  /* Additional stagger delays */
+  .delay-700 { animation-delay: 700ms; }
+  .delay-800 { animation-delay: 800ms; }
+
+  .scroll-animate.delay-700 { transition-delay: 700ms; }
+  .scroll-animate.delay-800 { transition-delay: 800ms; }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

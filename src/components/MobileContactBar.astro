@@ -1,0 +1,27 @@
+---
+const WHATSAPP_URL = 'https://wa.me/59899229981?text=Hola%2C%20quiero%20consultar%20sobre%20impermeabilizaci%C3%B3n%20de%20mi%20techo';
+---
+
+<div class="fixed bottom-0 left-0 right-0 lg:hidden z-50 px-4 pb-5 pt-3 bg-gradient-to-t from-black/60 to-transparent pointer-events-none">
+  <div class="flex gap-3 pointer-events-auto">
+    <a
+      href={WHATSAPP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center justify-center gap-2 h-13 px-5 rounded-2xl bg-[#25D366] text-white font-semibold text-sm shadow-lg shrink-0"
+      aria-label="Contactar por WhatsApp"
+    >
+      <!-- WhatsApp icon -->
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
+      </svg>
+    </a>
+    <a
+      href="/contacto"
+      class="flex flex-1 items-center justify-center gap-2 h-13 rounded-2xl bg-primary text-primary-foreground font-semibold text-sm shadow-lg"
+    >
+      Solicitar diagnóstico gratis
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+    </a>
+  </div>
+</div>

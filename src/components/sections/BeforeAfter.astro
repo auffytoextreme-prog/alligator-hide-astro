@@ -1,0 +1,213 @@
+---
+const projects = [
+  {
+    before: '/before-after/before-1.webp',
+    after: '/before-after/after-1.webp',
+    title: 'Techo residencial',
+    location: 'Montevideo',
+    tempDrop: 'Impermeabilización definitiva',
+  },
+  {
+    before: '/before-after/before-2.webp',
+    after: '/before-after/after-2.webp',
+    title: 'Techo Marita',
+    location: 'Montevideo',
+    tempDrop: 'Sistema AlligatorHide aplicado',
+  },
+  {
+    before: '/before-after/before-3.webp',
+    after: '/before-after/after-3.webp',
+    title: 'Terraza',
+    location: 'Montevideo',
+    tempDrop: 'Protección con garantía 18 años',
+  },
+  {
+    before: '/before-after/before-4.webp',
+    after: '/before-after/after-4.webp',
+    title: 'Cubierta',
+    location: 'Montevideo',
+    tempDrop: 'Reducción térmica significativa',
+  },
+];
+---
+
+<section class="section-padding bg-muted relative overflow-hidden">
+  <!-- Top wave transition from VideoDemo (secondary) -->
+  <div class="absolute top-0 left-0 right-0 pointer-events-none z-10 leading-none">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-10 lg:h-14 block">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,0 L0,0 Z" fill="hsl(0 0% 11%)" />
+    </svg>
+  </div>
+
+  <!-- Background decorative elements -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-0 left-0 w-1/3 h-full bg-primary/[0.02] -skew-x-12 -translate-x-1/4"></div>
+    <div class="absolute top-1/3 right-0 w-72 h-72 bg-accent/[0.06] rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-1/4 w-56 h-56 bg-primary/[0.03] rounded-full blur-3xl"></div>
+    <div class="pattern-crocodile absolute inset-0 opacity-5"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Header -->
+    <div class="text-right mb-16 max-w-5xl ml-auto lg:pr-12 scroll-animate">
+      <span class="inline-block text-primary text-sm font-bold uppercase tracking-[0.2em] mb-4">
+        Transformaciones Reales
+      </span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-8 leading-[1.1]">
+        Antes y después
+      </h2>
+      <div class="h-1.5 w-20 bg-primary ml-auto mb-8 rounded-full"></div>
+    </div>
+
+    <!-- Side-by-side viewer -->
+    <div class="max-w-5xl mx-auto scroll-animate delay-200" id="before-after-carousel">
+      <div class="relative">
+        <!-- Navigation buttons -->
+        <div class="flex items-center justify-end mb-6">
+          <div class="flex items-center gap-2">
+            <button
+              id="ba-prev"
+              class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary/70 hover:text-primary hover:bg-primary/20 hover:border-primary/40 transition-all duration-300"
+              aria-label="Proyecto anterior"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6" /></svg>
+            </button>
+            <button
+              id="ba-next"
+              class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary/70 hover:text-primary hover:bg-primary/20 hover:border-primary/40 transition-all duration-300"
+              aria-label="Siguiente proyecto"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6" /></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Images side by side -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          <!-- Before -->
+          <div class="group relative rounded-2xl overflow-hidden shadow-lg ring-1 ring-foreground/10 hover:ring-foreground/20 transition-all duration-500">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img
+                id="ba-before-img"
+                src={projects[0].before}
+                alt={`${projects[0].title} - antes`}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute bottom-4 left-4 text-white/70 text-xs font-medium uppercase tracking-[0.2em]">
+              Antes
+            </div>
+          </div>
+
+          <!-- After -->
+          <div class="group relative rounded-2xl overflow-hidden shadow-lg ring-1 ring-foreground/10 hover:ring-primary/30 transition-all duration-500">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img
+                id="ba-after-img"
+                src={projects[0].after}
+                alt={`${projects[0].title} - después`}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute bottom-4 left-4 text-white/70 text-xs font-medium uppercase tracking-[0.2em]">
+              Después
+            </div>
+            <div class="absolute -bottom-2 -right-2 w-32 h-32 bg-primary/10 rounded-full blur-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+          </div>
+        </div>
+
+        <!-- Dot indicators -->
+        <div class="flex items-center justify-center gap-3 mt-8" id="ba-dots">
+          {projects.map((p, i) => (
+            <button
+              data-ba-dot={i}
+              class={`transition-all duration-300 rounded-full ${
+                i === 0
+                  ? 'w-8 h-2 bg-primary shadow-sm shadow-primary/30'
+                  : 'w-2 h-2 bg-foreground/20 hover:bg-foreground/40'
+              }`}
+              aria-label={`Ver proyecto: ${p.title}`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom wave into ForWho (secondary/dark) -->
+  <div class="absolute bottom-0 left-0 right-0 pointer-events-none z-10 leading-none">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-10 lg:h-14 block">
+      <path d="M0,30 C360,0 1080,60 1440,30 L1440,60 L0,60 Z" fill="hsl(var(--secondary))" />
+    </svg>
+  </div>
+</section>
+
+<script define:vars={{ projects }}>
+  function initBeforeAfter() {
+    let activeIndex = 0;
+    const total = projects.length;
+
+    const beforeImg = document.getElementById('ba-before-img');
+    const afterImg = document.getElementById('ba-after-img');
+    const dots = document.querySelectorAll('[data-ba-dot]');
+    const prevBtn = document.getElementById('ba-prev');
+    const nextBtn = document.getElementById('ba-next');
+
+    if (!beforeImg || !afterImg) return;
+
+    function update(index) {
+      activeIndex = index;
+      const project = projects[activeIndex];
+
+      // Update images with fade
+      beforeImg.style.opacity = '0';
+      afterImg.style.opacity = '0';
+
+      setTimeout(() => {
+        beforeImg.src = project.before;
+        beforeImg.alt = `${project.title} - antes`;
+        afterImg.src = project.after;
+        afterImg.alt = `${project.title} - después`;
+        beforeImg.style.opacity = '1';
+        afterImg.style.opacity = '1';
+      }, 200);
+
+      // Update dots
+      dots.forEach((dot, i) => {
+        if (i === activeIndex) {
+          dot.className = 'transition-all duration-300 rounded-full w-8 h-2 bg-primary shadow-sm shadow-primary/30';
+        } else {
+          dot.className = 'transition-all duration-300 rounded-full w-2 h-2 bg-foreground/20 hover:bg-foreground/40';
+        }
+      });
+    }
+
+    prevBtn?.addEventListener('click', () => {
+      update((activeIndex - 1 + total) % total);
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      update((activeIndex + 1) % total);
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.dataset.baDot || '0');
+        update(index);
+      });
+    });
+
+    // Add transition for fade effect
+    beforeImg.style.transition = 'opacity 0.2s ease';
+    afterImg.style.transition = 'opacity 0.2s ease';
+  }
+
+  initBeforeAfter();
+  document.addEventListener('astro:page-load', initBeforeAfter);
+</script>

@@ -1,0 +1,511 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const products = [
+  {
+    id: 'primer',
+    name: 'Primer',
+    subtitle: 'Membrana acrílica de estireno-butadieno',
+    role: 'Capa base de imprimación',
+    step: '01',
+    description: 'Membrana líquida que penetra y sella el sustrato, creando una base de adherencia excepcional para el resto del sistema. Funciona como barrera contra la intemperie y el vapor.',
+    color: 'from-[#1a2a3a] to-[#0d1b2a]',
+    accent: '#5B8DB8',
+    highlights: [
+      'Base agua, no tóxico, libre de solventes',
+      'Aplicable sobre superficies húmedas',
+      'Excelente puenteo de grietas',
+      'Secado rápido: 30-60 min al tacto',
+    ],
+    technicalData: [
+      { label: 'Tipo', value: 'Estireno-butadieno' },
+      { label: 'Sólidos', value: '58,0 ± 2% en peso' },
+      { label: 'Peso/Galón', value: '4,22 ± 0,02 kg' },
+      { label: 'Color', value: 'Azul oscuro → seca negro' },
+      { label: 'Secado', value: '30-60 min al tacto, 2h para recubrir' },
+      { label: 'COV', value: '4 g/L' },
+      { label: 'Cobertura', value: '7,4 m²/gal a 11 mils secos' },
+      { label: 'Temp. aplicación', value: '> 10 °C' },
+    ],
+    pdfUrl: '/ficha-primer.pdf',
+  },
+  {
+    id: 'supersealer',
+    name: 'Super Sealer',
+    subtitle: 'Membrana acrílica de estireno-butadieno',
+    role: 'Sellado principal de alto rendimiento',
+    step: '02',
+    description: 'Membrana monolítica de alto rendimiento optimizada para climas cálidos. Proporciona el sellado impermeable principal del sistema, con flexibilidad extrema que acompaña los movimientos estructurales.',
+    color: 'from-[#3a2e0a] to-[#2a2008]',
+    accent: '#D4A843',
+    highlights: [
+      'Excelente desempeño en climas cálidos (> 24 °C)',
+      'Recubrimiento de goma altamente flexible',
+      'Bajo COV y no inflamable',
+      'Secado rápido: 30-60 min al tacto',
+    ],
+    technicalData: [
+      { label: 'Tipo', value: 'Estireno-butadieno' },
+      { label: 'Sólidos', value: '58 ± 2% en peso' },
+      { label: 'Peso/Galón', value: '4,22 ± 0,02 kg' },
+      { label: 'Color', value: 'Amarillo pálido' },
+      { label: 'Secado', value: '30-60 min al tacto, 2h para recubrir' },
+      { label: 'Capas', value: '2 capas mínimo en direcciones opuestas' },
+      { label: 'Equipo', value: 'Airless 1500-2000 psi' },
+      { label: 'Temp. aplicación', value: '> 10 °C' },
+    ],
+    pdfUrl: '/ficha-supersealer.pdf',
+  },
+  {
+    id: 'reinforcer',
+    name: 'Reinforcer',
+    subtitle: 'Membrana acrílica de estireno-butadieno',
+    role: 'Capa de refuerzo anti-granizo',
+    step: '03',
+    description: 'Segundo recubrimiento del sistema reforzado, diseñado para máxima protección contra impacto de granizo. Su alto contenido de sólidos genera una capa densa y resistente que protege la integridad del techo.',
+    color: 'from-[#1a2e1a] to-[#0d1f0d]',
+    accent: '#6B9E6B',
+    highlights: [
+      'Mayor contenido de sólidos: 69,23%',
+      'Protección reforzada contra granizo',
+      'Base agua, no tóxico, libre de solventes',
+      'Recubrimiento de goma altamente flexible',
+    ],
+    technicalData: [
+      { label: 'Tipo', value: 'Estireno-butadieno' },
+      { label: 'Sólidos', value: '69,23 ± 2% en peso' },
+      { label: 'Peso/Galón', value: '5,11 ± 0,02 kg' },
+      { label: 'Color', value: 'Verde grisáceo' },
+      { label: 'Secado', value: '30-60 min al tacto, 2h para recubrir' },
+      { label: 'Capas', value: '2 capas mínimo en direcciones opuestas' },
+      { label: 'Equipo', value: 'Airless 1500-2000 psi' },
+      { label: 'Temp. aplicación', value: '> 10 °C' },
+    ],
+    pdfUrl: '/ficha-reinforcer.pdf',
+  },
+  {
+    id: 'sunscreen',
+    name: 'Sunscreen',
+    subtitle: 'Acabado acrílico siliconado con microcerámica',
+    role: 'Capa final de protección UV y térmica',
+    step: '04',
+    description: 'Mezcla de alto rendimiento de componentes acrílicos siliconados y esferas de microcerámica. Crea un acabado ultra blanco que refleja los rayos del sol y reduce el calor interior hasta un 80%.',
+    color: 'from-[#0a2e2e] to-[#082222]',
+    accent: '#4CBFA6',
+    highlights: [
+      'Reduce temperatura interior hasta 80%',
+      'Resistente a rayos UV',
+      'Reforzado con fibra, resistente al viento',
+      'Alta reflectividad solar',
+    ],
+    technicalData: [
+      { label: 'Tipo', value: 'Acrílico siliconado con cerámica' },
+      { label: 'Sólidos', value: '65,4 ± 1% en peso' },
+      { label: 'Peso/Galón', value: '5,18 ± 0,02 kg' },
+      { label: 'Color', value: 'Azul claro → seca ultra blanco' },
+      { label: 'Secado', value: '60 min al tacto, 2h para recubrir' },
+      { label: 'Capas', value: '2 capas mínimo en direcciones opuestas' },
+      { label: 'Equipo', value: 'Airless 1500-2000 psi' },
+      { label: 'Temp. aplicación', value: '> 10 °C' },
+    ],
+    pdfUrl: '/ficha-sunscreen.pdf',
+  },
+];
+
+const substrates = [
+  'Hormigón y morteros',
+  'Membranas de asfalto modificado',
+  'Techos construidos',
+  'Espuma de poliuretano',
+  'Tejas granuladas',
+  'Metal y metal galvanizado',
+  'EPDM y TPO envejecido',
+  'Alquitrán y grava',
+  'Fibrocemento',
+  'Superficies bituminosas',
+];
+
+const securityItems = [
+  'Todos los productos son base agua',
+  'No tóxicos y libres de solventes',
+  'Bajo COV (Compuestos Orgánicos Volátiles)',
+  'No inflamables',
+  'Sin derivados de petróleo',
+  'Fabricado en EE.UU.',
+];
+---
+
+<Layout
+  title="Productos - Sistema AlligatorHide"
+  description="Conozca los productos del sistema de impermeabilización AlligatorHide: Primer, Super Sealer, Reinforcer y Sunscreen. Datos técnicos completos."
+  canonical="/productos"
+>
+  <!-- Hero -->
+  <section class="pt-40 pb-24 relative overflow-hidden bg-[#0A1F16]">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-br from-[#0A1F16] via-[#153728] to-[#0A1F16]"></div>
+      <div class="absolute top-0 right-0 w-1/3 h-full opacity-[0.05] pattern-crocodile"></div>
+      <div class="absolute -top-24 -left-24 w-96 h-96 bg-[#4CBFA6]/10 rounded-full blur-[120px] animate-pulse-subtle"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[300px] bg-[#153728]/40 rounded-full blur-[100px]"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-4xl">
+        <span class="inline-block text-[#4CBFA6] text-sm font-bold uppercase tracking-[0.2em] mb-6 animate-fade-up">
+          Sistema de 4 capas
+        </span>
+        <h1 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-[1.05] tracking-tight animate-fade-up" style="animation-delay: 100ms">
+          Tecnología<br class="hidden sm:block" />
+          AlligatorHide.
+        </h1>
+        <p class="text-white/70 text-lg md:text-xl leading-relaxed max-w-3xl animate-fade-up" style="animation-delay: 300ms">
+          Cuatro productos especializados que trabajan en sinergia para crear una barrera impermeable, térmica y duradera. Fabricado en EE.UU. con garantía de hasta 18 años.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Selector -->
+  <section class="py-24 bg-background relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none opacity-[0.02]">
+      <div class="absolute top-0 left-0 w-full h-full pattern-crocodile"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16 scroll-animate">
+        <span class="inline-block text-primary text-sm font-bold uppercase tracking-[0.2em] mb-4">
+          Nuestros Productos
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">
+          El sistema completo
+        </h2>
+        <div class="h-1.5 w-16 bg-primary mx-auto mb-8 rounded-full"></div>
+        <p class="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
+          Cada capa cumple una función específica. Juntas, forman el sistema de impermeabilización más avanzado del mercado.
+        </p>
+      </div>
+
+      <div class="max-w-6xl mx-auto" id="product-selector">
+        <!-- Product Tabs -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+          {products.map((p, i) => (
+            <button
+              data-product-tab={p.id}
+              class={`group flex items-center gap-3 px-6 py-3 rounded-full transition-all duration-500 border font-display font-semibold text-sm sm:text-base ${
+                i === 0
+                  ? 'bg-secondary text-white border-secondary shadow-lg scale-105'
+                  : 'bg-transparent text-foreground/60 border-border hover:border-foreground/30 hover:text-foreground'
+              }`}
+            >
+              <span class={`text-xs font-bold ${i === 0 ? 'text-[#4CBFA6]' : 'text-foreground/30'}`} data-product-step>
+                {p.step}
+              </span>
+              {p.name}
+            </button>
+          ))}
+        </div>
+
+        <!-- Product Detail Cards -->
+        {products.map((product, i) => (
+          <div
+            data-product-panel={product.id}
+            class={`relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-gradient-to-br ${product.color} ${i === 0 ? '' : 'hidden'}`}
+          >
+            <div class="absolute inset-0 pointer-events-none">
+              <div class="absolute top-0 right-0 w-1/2 h-full opacity-[0.04] pattern-crocodile"></div>
+              <div
+                class="absolute -top-20 -right-20 w-80 h-80 rounded-full blur-[100px] opacity-20"
+                style={`background-color: ${product.accent}`}
+              ></div>
+            </div>
+
+            <div class="relative z-10 p-8 sm:p-12 lg:p-16">
+              <!-- Header -->
+              <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-12">
+                <div class="max-w-2xl">
+                  <div class="flex items-center gap-4 mb-4">
+                    <span
+                      class="font-display text-6xl sm:text-7xl font-bold opacity-15"
+                      style={`color: ${product.accent}`}
+                    >
+                      {product.step}
+                    </span>
+                    <div>
+                      <span
+                        class="text-xs font-bold uppercase tracking-[0.2em] block mb-1"
+                        style={`color: ${product.accent}`}
+                      >
+                        {product.role}
+                      </span>
+                      <h3 class="font-display text-3xl sm:text-4xl font-bold text-white">
+                        {product.name}
+                      </h3>
+                    </div>
+                  </div>
+                  <p class="text-white/50 text-sm font-medium mb-6">
+                    {product.subtitle}
+                  </p>
+                  <p class="text-white/70 text-lg leading-relaxed">
+                    {product.description}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Two columns: Highlights + Technical Data -->
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 relative">
+                <div>
+                  <h4 class="font-display text-lg font-bold text-white mb-6 flex items-center gap-3">
+                    <div class="w-8 h-[2px] rounded-full" style={`background-color: ${product.accent}`}></div>
+                    Destacados
+                  </h4>
+                  <ul class="space-y-4">
+                    {product.highlights.map((h) => (
+                      <li class="flex items-start gap-4">
+                        <div
+                          class="w-2 h-2 rounded-full mt-2 flex-shrink-0 shadow-lg"
+                          style={`background-color: ${product.accent}; box-shadow: 0 0 10px ${product.accent}40`}
+                        ></div>
+                        <span class="text-white/80 font-medium">{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 class="font-display text-lg font-bold text-white mb-6 flex items-center gap-3">
+                    <div class="w-8 h-[2px] rounded-full" style={`background-color: ${product.accent}`}></div>
+                    Datos Técnicos
+                  </h4>
+                  <div class="bg-white/[0.04] rounded-2xl border border-white/[0.06] p-6">
+                    <div class="space-y-4">
+                      {product.technicalData.map((item) => (
+                        <div class="flex justify-between items-baseline gap-4 pb-3 border-b border-white/[0.06] last:border-0 last:pb-0">
+                          <span class="text-white/40 text-xs font-bold uppercase tracking-widest flex-shrink-0">
+                            {item.label}
+                          </span>
+                          <span class="text-white text-sm font-medium text-right">
+                            {item.value}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PDF Download -->
+              <a
+                href={product.pdfUrl}
+                download
+                class="inline-flex items-center gap-2 mt-8 text-sm font-semibold transition-colors duration-200 hover:opacity-80"
+                style={`color: ${product.accent}`}
+              >
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                Descargar ficha técnica
+              </a>
+            </div>
+          </div>
+        ))}
+
+        <!-- Flow Indicator -->
+        <div class="flex items-center justify-center gap-2 mt-10" id="product-dots">
+          {products.map((p, i) => (
+            <div class="flex items-center gap-2">
+              <button
+                data-product-dot={p.id}
+                class={`transition-all duration-300 rounded-full ${
+                  i === 0 ? 'w-10 h-3 shadow-sm' : 'w-3 h-3 bg-foreground/15 hover:bg-foreground/30'
+                }`}
+                style={i === 0 ? `background-color: ${p.accent}` : undefined}
+              ></button>
+              {i < products.length - 1 && (
+                <svg class="w-3 h-3 text-foreground/15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accordion Section -->
+  <section class="py-24 bg-secondary relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute inset-0 bg-[#0A1F16]/50"></div>
+      <div class="absolute top-0 left-0 right-0 z-10 leading-none">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-10 lg:h-14 block">
+          <path d="M0,30 C360,60 1080,0 1440,30 L1440,0 L0,0 Z" fill="hsl(0 0% 98%)" />
+        </svg>
+      </div>
+      <div class="pattern-crocodile absolute inset-0 opacity-[0.05]"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-primary/10 rounded-full blur-[120px]"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16 scroll-animate">
+          <span class="inline-block text-[#4CBFA6] text-sm font-bold uppercase tracking-[0.2em] mb-4">
+            Información Técnica
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
+            Aplicación y Garantías
+          </h2>
+          <div class="h-1.5 w-16 bg-[#4CBFA6] mx-auto mb-8 rounded-full shadow-[0_0_15px_rgba(76,191,166,0.3)]"></div>
+          <p class="text-white/60 max-w-2xl mx-auto text-lg">
+            Transparencia técnica para arquitectos, ingenieros y profesionales de la construcción.
+          </p>
+        </div>
+
+        <div class="space-y-6 scroll-animate delay-200">
+          <!-- Accordion: Metodología -->
+          <details class="group bg-[#153728]/40 backdrop-blur-md rounded-2xl border border-white/10 shadow-2xl transition-all duration-300 hover:border-primary/30">
+            <summary class="text-left font-display text-xl sm:text-2xl font-bold text-white hover:text-[#4CBFA6] py-8 px-8 cursor-pointer list-none flex items-center justify-between">
+              Metodología de Aplicación
+              <svg class="w-5 h-5 text-white/40 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9" /></svg>
+            </summary>
+            <div class="text-white/70 pb-8 px-8 leading-relaxed text-lg space-y-6">
+              <div class="bg-white/5 p-6 rounded-xl border border-white/5">
+                <h4 class="text-white font-display font-bold mb-3">Preparación de superficie</h4>
+                <p>Limpieza con agua a presión o cepillo de alambre. La superficie debe estar limpia, sólida y libre de polvo, contaminantes o material suelto. Eliminar todo moho existente antes de la aplicación. La superficie no debe acumular agua por más de 48 horas.</p>
+              </div>
+              <div class="bg-white/5 p-6 rounded-xl border border-white/5">
+                <h4 class="text-white font-display font-bold mb-3">Colocación</h4>
+                <p>Aplicar con rodillo de superficie rugosa de 3/4" o rociador <span class="text-white font-semibold">airless</span> a 1500-2000 psi. Se necesitan dos capas completas para un sellado adecuado, siempre en direcciones opuestas. Esperar 2-4 horas entre capas a 24 °C.</p>
+              </div>
+              <div class="bg-white/5 p-6 rounded-xl border border-white/5">
+                <h4 class="text-white font-display font-bold mb-3">Juntas y reparaciones</h4>
+                <p>Aplicar relleno de grietas y tejido de poliéster sobre grietas, costuras, tapajuntas y alrededor de cualquier objeto, 3 pulgadas a ambos lados. Dejar secar completamente antes de continuar.</p>
+              </div>
+            </div>
+          </details>
+
+          <!-- Accordion: Sustratos -->
+          <details class="group bg-[#153728]/40 backdrop-blur-md rounded-2xl border border-white/10 shadow-2xl transition-all duration-300 hover:border-primary/30">
+            <summary class="text-left font-display text-xl sm:text-2xl font-bold text-white hover:text-[#4CBFA6] py-8 px-8 cursor-pointer list-none flex items-center justify-between">
+              Compatibilidad de Sustratos
+              <svg class="w-5 h-5 text-white/40 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9" /></svg>
+            </summary>
+            <div class="text-white/70 pb-8 px-8 leading-relaxed">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                {substrates.map((item) => (
+                  <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
+                    <div class="w-2 h-2 bg-[#4CBFA6] rounded-full shadow-[0_0_8px_rgba(76,191,166,0.6)]"></div>
+                    <span class="text-white/90 font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
+
+          <!-- Accordion: Garantías -->
+          <details class="group bg-[#153728]/40 backdrop-blur-md rounded-2xl border border-white/10 shadow-2xl transition-all duration-300 hover:border-primary/30">
+            <summary class="text-left font-display text-xl sm:text-2xl font-bold text-white hover:text-[#4CBFA6] py-8 px-8 cursor-pointer list-none flex items-center justify-between">
+              Garantías
+              <svg class="w-5 h-5 text-white/40 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9" /></svg>
+            </summary>
+            <div class="text-white/70 pb-8 px-8 leading-relaxed">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
+                <div class="bg-gradient-to-br from-[#4CBFA6]/15 to-[#4CBFA6]/5 p-6 rounded-2xl border border-[#4CBFA6]/25">
+                  <h4 class="text-white font-display text-xl font-bold mb-4 flex items-center gap-3">
+                    <svg class="w-6 h-6 text-[#4CBFA6]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                    Plan Estándar
+                  </h4>
+                  <p class="text-white/60">
+                    Garantía certificada de <span class="text-white font-bold">12 años</span> que cubre integridad estructural y estanqueidad total.
+                  </p>
+                </div>
+                <div class="bg-gradient-to-br from-[#4CBFA6]/15 to-[#4CBFA6]/5 p-6 rounded-2xl border border-[#4CBFA6]/25">
+                  <h4 class="text-white font-display text-xl font-bold mb-4 flex items-center gap-3">
+                    <svg class="w-6 h-6 text-[#4CBFA6]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+                    Plan Premium
+                  </h4>
+                  <p class="text-white/60">
+                    Protección extendida de <span class="text-white font-bold">18 años</span> para activos críticos y máxima tranquilidad.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- Accordion: Seguridad -->
+          <details class="group bg-[#153728]/40 backdrop-blur-md rounded-2xl border border-white/10 shadow-2xl transition-all duration-300 hover:border-primary/30">
+            <summary class="text-left font-display text-xl sm:text-2xl font-bold text-white hover:text-[#4CBFA6] py-8 px-8 cursor-pointer list-none flex items-center justify-between">
+              Seguridad y Medio Ambiente
+              <svg class="w-5 h-5 text-white/40 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9" /></svg>
+            </summary>
+            <div class="text-white/70 pb-8 px-8 leading-relaxed text-lg">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                {securityItems.map((item) => (
+                  <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
+                    <div class="w-2 h-2 bg-[#4CBFA6] rounded-full shadow-[0_0_8px_rgba(76,191,166,0.6)]"></div>
+                    <span class="text-white/90 font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 right-0 pointer-events-none z-10 leading-none">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-10 lg:h-14 block">
+        <path d="M0,30 C360,0 1080,60 1440,30 L1440,60 L0,60 Z" fill="white" />
+      </svg>
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ products }}>
+  function initProductTabs() {
+    const tabs = document.querySelectorAll('[data-product-tab]');
+    const panels = document.querySelectorAll('[data-product-panel]');
+    const dots = document.querySelectorAll('[data-product-dot]');
+    const accents = {};
+    products.forEach(p => { accents[p.id] = p.accent; });
+
+    function activate(id) {
+      // Update tabs
+      tabs.forEach(tab => {
+        const isActive = tab.dataset.productTab === id;
+        tab.className = `group flex items-center gap-3 px-6 py-3 rounded-full transition-all duration-500 border font-display font-semibold text-sm sm:text-base ${
+          isActive
+            ? 'bg-secondary text-white border-secondary shadow-lg scale-105'
+            : 'bg-transparent text-foreground/60 border-border hover:border-foreground/30 hover:text-foreground'
+        }`;
+        const step = tab.querySelector('[data-product-step]');
+        if (step) {
+          step.className = `text-xs font-bold ${isActive ? 'text-[#4CBFA6]' : 'text-foreground/30'}`;
+        }
+      });
+
+      // Update panels
+      panels.forEach(panel => {
+        panel.classList.toggle('hidden', panel.dataset.productPanel !== id);
+      });
+
+      // Update dots
+      dots.forEach(dot => {
+        const isActive = dot.dataset.productDot === id;
+        if (isActive) {
+          dot.className = 'transition-all duration-300 rounded-full w-10 h-3 shadow-sm';
+          dot.style.backgroundColor = accents[id];
+        } else {
+          dot.className = 'transition-all duration-300 rounded-full w-3 h-3 bg-foreground/15 hover:bg-foreground/30';
+          dot.style.backgroundColor = '';
+        }
+      });
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => activate(tab.dataset.productTab));
+    });
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => activate(dot.dataset.productDot));
+    });
+  }
+
+  initProductTabs();
+  document.addEventListener('astro:page-load', initProductTabs);
+</script>

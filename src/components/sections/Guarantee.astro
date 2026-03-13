@@ -1,0 +1,115 @@
+---
+const stats = [
+  { value: 18, suffix: '', prefix: '', label: 'años de garantía máxima' },
+  { value: 30, suffix: '%', prefix: '-', label: 'de temperatura interior' },
+  { value: 20, suffix: '', prefix: '+', label: 'años de trayectoria en EE.UU.' },
+  { value: 100, suffix: '%', prefix: '', label: 'ecológico, sin derivados del petróleo' },
+];
+---
+
+<section class="relative overflow-hidden bg-gradient-to-b from-[hsl(0,0%,11%)] via-[hsl(200,8%,10%)] to-[hsl(0,0%,11%)] pattern-crocodile py-8 md:py-12 lg:py-14" id="guarantee-section">
+  <!-- Premium top divider line -->
+  <div class="absolute top-0 left-0 right-0 pointer-events-none">
+    <div class="h-[2px] bg-gradient-to-r from-transparent via-white/60 to-transparent"></div>
+    <div class="h-[2px] bg-gradient-to-r from-transparent via-white/8 to-transparent blur-[2px]"></div>
+    <div class="h-3 bg-gradient-to-r from-transparent via-white/4 to-transparent blur-md"></div>
+  </div>
+
+  <!-- Animated decorative glow orbs -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute -top-10 -left-10 w-96 h-96 bg-accent/[0.10] rounded-full blur-[100px] animate-drift-a"></div>
+    <div class="absolute -bottom-10 -right-10 w-[28rem] h-[28rem] bg-primary/[0.08] rounded-full blur-[100px] animate-drift-b"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[250px] bg-[#4CBFA6]/[0.05] rounded-full blur-[120px] animate-drift-c"></div>
+    <div class="absolute top-10 right-1/4 w-64 h-64 bg-[#5BC4E0]/[0.04] rounded-full blur-[80px] animate-drift-b"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-5xl mx-auto">
+      <!-- Desktop: horizontal row with vertical dividers -->
+      <div class="hidden lg:flex items-start justify-center">
+        {stats.map((stat, index) => (
+          <>
+            <div class={`flex-1 flex flex-col items-center text-center px-6 lg:px-8 scroll-animate delay-${(index + 1) * 100}`}>
+              <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-none text-[#E8E8E8]">
+                <span class="counter" data-target={stat.value} data-prefix={stat.prefix} data-suffix={stat.suffix}>
+                  {stat.prefix}0{stat.suffix}
+                </span>
+              </div>
+              <div
+                class="h-0.5 bg-gradient-to-r from-transparent via-[#4CBFA6] to-transparent mx-auto mt-2 mb-2 rounded-full counter-bar w-0 opacity-0"
+                style={`transition-delay: ${(index + 1) * 150 + 400}ms`}
+              ></div>
+              <p class="text-secondary-foreground/50 text-sm font-medium uppercase tracking-[0.12em] leading-snug max-w-[160px]">
+                {stat.label}
+              </p>
+            </div>
+            {index < stats.length - 1 && (
+              <div class="w-px self-stretch my-2 bg-gradient-to-b from-transparent via-white/10 to-transparent flex-shrink-0"></div>
+            )}
+          </>
+        ))}
+      </div>
+
+      <!-- Mobile: 2-col grid -->
+      <div class="grid grid-cols-2 gap-y-8 gap-x-4 lg:hidden">
+        {stats.map((stat, index) => (
+          <>
+            {index === 2 && (
+              <div class="col-span-2 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+            )}
+            <div class={`flex flex-col items-center text-center scroll-animate delay-${(index + 1) * 100}`}>
+              <div class="font-display text-3xl font-bold leading-none text-[#E8E8E8]">
+                <span class="counter" data-target={stat.value} data-prefix={stat.prefix} data-suffix={stat.suffix}>
+                  {stat.prefix}0{stat.suffix}
+                </span>
+              </div>
+              <div
+                class="h-0.5 bg-[#4CBFA6]/40 mx-auto mt-1.5 mb-1.5 rounded-full counter-bar w-0 opacity-0"
+                style={`transition-delay: ${(index + 1) * 150 + 400}ms`}
+              ></div>
+              <p class="text-secondary-foreground/50 text-xs font-medium uppercase tracking-[0.12em] leading-snug max-w-[120px]">
+                {stat.label}
+              </p>
+            </div>
+          </>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+(function() {
+  var started = false;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !started) {
+        started = true;
+        document.querySelectorAll('.counter').forEach(function(el) {
+          var target = parseInt(el.dataset.target || '0');
+          var prefix = el.dataset.prefix || '';
+          var suffix = el.dataset.suffix || '';
+          var startTime = null;
+          var duration = 1500;
+          function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = prefix + Math.floor(eased * target) + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+        document.querySelectorAll('.counter-bar').forEach(function(bar) {
+          bar.style.transition = 'width 1s ease-out, opacity 1s ease-out';
+          bar.style.width = bar.closest('.lg\\:hidden') ? '2rem' : '3rem';
+          bar.style.opacity = '1';
+        });
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.2 });
+  var section = document.getElementById('guarantee-section');
+  if (section) observer.observe(section);
+})();
+</script>

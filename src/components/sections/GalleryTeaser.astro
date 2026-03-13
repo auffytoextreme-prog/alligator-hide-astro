@@ -1,0 +1,62 @@
+---
+import { Image } from 'astro:assets';
+import gallery1 from '@/assets/gallery-1.jpg';
+import gallery2 from '@/assets/gallery-2.jpg';
+import gallery3 from '@/assets/gallery-3.jpg';
+import gallery4 from '@/assets/gallery-4.jpg';
+
+const galleryItems = [
+  { image: gallery1, title: 'Aplicación profesional', category: 'Techos' },
+  { image: gallery2, title: 'Terraza residencial', category: 'Terrazas' },
+  { image: gallery3, title: 'Nave industrial', category: 'Comercial' },
+  { image: gallery4, title: 'Control de calidad', category: 'Proceso' },
+];
+---
+
+<section class="section-padding bg-background">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6 scroll-animate">
+      <div>
+        <span class="inline-block text-primary text-sm font-semibold uppercase tracking-wider mb-4">
+          Nuestro trabajo
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
+          Galería de proyectos
+        </h2>
+      </div>
+      <a
+        href="/galeria"
+        class="group flex items-center gap-2 self-start lg:self-auto border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-primary-foreground px-4 py-2 rounded-lg font-medium transition-all duration-300"
+      >
+        Ver galería completa
+        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+      {galleryItems.map((item, index) => (
+        <a
+          href="/galeria"
+          class={`group relative aspect-[4/3] overflow-hidden rounded-xl scroll-animate`}
+          style={`transition-delay: ${(index + 1) * 100}ms`}
+        >
+          <Image
+            src={item.image}
+            alt={item.title}
+            width={400}
+            height={300}
+            format="webp"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-secondary/80 via-secondary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            <span class="text-primary-foreground/80 text-xs uppercase tracking-wider">{item.category}</span>
+            <h3 class="text-secondary-foreground font-semibold text-sm mt-1">{item.title}</h3>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

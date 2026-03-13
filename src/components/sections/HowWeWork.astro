@@ -1,0 +1,87 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Diagnóstico',
+    description: 'Evaluación técnica sin costo de su techo. Inspeccionamos las condiciones actuales y le presentamos una propuesta personalizada con cronograma y presupuesto detallado.',
+  },
+  {
+    number: '02',
+    title: 'Aplicación',
+    description: 'Nos encargamos de aplicar la impermeabilización en su techo, con nuestros técnicos especializados y materiales importados de EE.UU. Sin dañar la superficie existente, con acabado impecable. Tiempo aproximado 3 a 5 días.',
+  },
+  {
+    number: '03',
+    title: 'Seguimiento',
+    description: 'Monitoreo técnico continuo durante toda la vida útil de la garantía. Inspecciones programadas, soporte directo y opción de extensión por 6 años adicionales.',
+  },
+];
+---
+
+<section id="como-trabajamos" class="min-h-screen flex flex-col justify-center section-padding bg-muted relative overflow-hidden">
+  <!-- Background decorative elements -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-0 left-0 w-1/3 h-full bg-primary/[0.02] skew-x-12 -translate-x-1/4"></div>
+    <div class="absolute bottom-0 right-0 w-64 h-64 bg-accent/[0.03] rounded-full blur-3xl"></div>
+    <div class="absolute top-1/4 right-1/4 w-48 h-48 bg-primary/[0.03] rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Header -->
+    <div class="text-center mb-20 scroll-animate">
+      <span class="inline-block text-primary text-sm font-bold uppercase tracking-[0.2em] mb-4">
+        Nuestro Proceso
+      </span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-8 leading-[1.1]">
+        Tres pasos. Sin complicaciones.
+      </h2>
+      <div class="h-1.5 w-20 bg-primary mx-auto mb-8 rounded-full"></div>
+    </div>
+
+    <!-- Steps -->
+    <div class="relative max-w-5xl mx-auto">
+      <!-- Connecting line - mobile only -->
+      <div class="lg:hidden absolute top-0 bottom-0 left-[1.6rem] w-px">
+        <div class="w-full h-full bg-border"></div>
+      </div>
+
+      <!-- Mobile steps -->
+      <div class="grid grid-cols-1 gap-8 lg:hidden">
+        {steps.map((step, index) => (
+          <div class={`scroll-animate delay-${(index + 1) * 200}`}>
+            <div class="flex items-start gap-6 group w-full">
+              <div class="relative z-10 flex-shrink-0">
+                <div class="absolute inset-0 bg-accent/20 rounded-full blur-md scale-0 group-hover:scale-150 transition-transform duration-500"></div>
+                <div class="relative w-[3.25rem] h-[3.25rem] rounded-full bg-card border-2 border-accent/30 group-hover:border-accent/60 flex items-center justify-center transition-all duration-500 shadow-sm">
+                  <span class="font-display text-sm font-bold text-accent">{step.number}</span>
+                </div>
+              </div>
+              <div>
+                <h3 class="font-display text-xl font-semibold text-foreground mb-2">{step.title}</h3>
+                <p class="text-muted-foreground text-base leading-relaxed max-w-xs">{step.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Desktop: editorial typography layout -->
+      <div class="hidden lg:flex max-w-5xl mx-auto">
+        {steps.map((step, index) => (
+          <div class={`flex-1 ${index > 0 ? 'border-l border-foreground/[0.06] pl-10' : ''} ${index < 2 ? 'pr-10' : ''} scroll-animate delay-${(index + 1) * 200}`}>
+            <span class="block font-display text-[3.5rem] font-bold leading-none text-accent/20 select-none mb-4">
+              {step.number}
+            </span>
+            <h3 class="font-display text-[1.4rem] font-semibold text-foreground mb-3 leading-tight">
+              {step.title}
+            </h3>
+            <div class="w-8 h-[1.5px] bg-accent/40 mb-5"></div>
+            <p class="text-muted-foreground text-[0.95rem] leading-[1.75]">
+              {step.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

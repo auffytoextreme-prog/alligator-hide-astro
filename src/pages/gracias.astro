@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const WHATSAPP_URL = 'https://wa.me/59899229981?text=Hola%2C%20acabo%20de%20enviar%20una%20consulta%20por%20la%20web%20y%20quiero%20coordinar.';
+---
+
+<Layout
+  title="Consulta Recibida | AlligatorHide Uruguay"
+  description="Gracias por contactar a AlligatorHide Uruguay. Nos comunicaremos a la brevedad."
+  canonical="/gracias"
+  noindex={true}
+>
+  <section class="min-h-[80vh] flex items-center justify-center bg-secondary pattern-crocodile">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-xl mx-auto text-center">
+        <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-8 animate-fade-up">
+          <svg class="w-10 h-10 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl text-secondary-foreground mb-6 animate-fade-up" style="animation-delay: 100ms">
+          Recibimos su consulta
+        </h1>
+
+        <p class="text-lg text-secondary-foreground/70 leading-relaxed mb-10 animate-fade-up" style="animation-delay: 200ms">
+          Nuestro equipo le contactará a la brevedad
+          en horario hábil (Lunes a Viernes, 10 a 18 hs).
+          Si lo prefiere, escríbanos por WhatsApp para una respuesta inmediata.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style="animation-delay: 300ms">
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-lg bg-[#25D366] hover:bg-[#20bd5c] text-white font-medium transition-colors"
+          >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" /></svg>
+            Escribir por WhatsApp
+          </a>
+          <a
+            href="/"
+            class="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-lg bg-white/10 backdrop-blur-sm text-white border border-white/30 hover:bg-white/20 font-medium transition-all duration-300"
+          >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg>
+            Volver al inicio
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
