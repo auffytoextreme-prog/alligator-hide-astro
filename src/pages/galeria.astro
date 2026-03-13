@@ -1,23 +1,39 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import gallery1 from '@/assets/gallery-1.jpg';
-import gallery2 from '@/assets/gallery-2.jpg';
-import gallery3 from '@/assets/gallery-3.jpg';
-import gallery4 from '@/assets/gallery-4.jpg';
 
-const galleryItems = [
-  { id: 1, image: gallery1, title: 'Aplicación profesional', category: 'Techos', description: 'Aplicación de sistema AlligatorHide sobre superficie de hormigón.' },
-  { id: 2, image: gallery2, title: 'Terraza residencial', category: 'Terrazas', description: 'Impermeabilización completa de terraza en vivienda particular.' },
-  { id: 3, image: gallery3, title: 'Nave industrial', category: 'Comercial', description: 'Proyecto de impermeabilización para edificio comercial.' },
-  { id: 4, image: gallery4, title: 'Control de calidad', category: 'Proceso', description: 'Inspección técnica post-aplicación del sistema.' },
-  { id: 5, image: gallery1, title: 'Techo plano comercial', category: 'Techos', description: 'Sistema aplicado en edificio corporativo.' },
-  { id: 6, image: gallery3, title: 'Cubierta metálica', category: 'Techos', description: 'Impermeabilización sobre estructura metálica.' },
-  { id: 7, image: gallery2, title: 'Balcón residencial', category: 'Terrazas', description: 'Protección de balcón con exposición solar.' },
-  { id: 8, image: gallery4, title: 'Seguimiento técnico', category: 'Proceso', description: 'Visita de control y mantenimiento.' },
+import img01 from '@/assets/gallery/preparacion-superficie.jpg';
+import img02 from '@/assets/gallery/aplicacion-base-impermeabilizante.jpg';
+import img03 from '@/assets/gallery/aplicacion-base-rodillo.jpg';
+import img04 from '@/assets/gallery/sellado-de-canos.jpg';
+import img05 from '@/assets/gallery/producto-alligatorhide.jpg';
+import img06 from '@/assets/gallery/aplicacion-capa-blanca.jpg';
+import img07 from '@/assets/gallery/techo-comercial-en-proceso.jpg';
+import img08 from '@/assets/gallery/instalacion-tela-refuerzo.jpg';
+import img09 from '@/assets/gallery/equipo-trabajo-en-terraza.jpg';
+import img10 from '@/assets/gallery/aplicacion-rodillo-terraza.jpg';
+import img11 from '@/assets/gallery/materiales-y-tela-refuerzo.jpg';
+import img12 from '@/assets/gallery/capa-protectora-blanca.jpg';
+import img13 from '@/assets/gallery/aplicacion-terraza-residencial.jpg';
+import img14 from '@/assets/gallery/tecnico-alligatorhide.jpg';
+import img15 from '@/assets/gallery/vista-aerea-antes.jpg';
+import img16 from '@/assets/gallery/vista-aerea-antes-2.jpg';
+
+import img18 from '@/assets/gallery/vista-aerea-antes-detalle.jpg';
+import img19 from '@/assets/gallery/vista-aerea-proceso-parcial.jpg';
+import img20 from '@/assets/gallery/vista-aerea-proceso-avance.jpg';
+import img21 from '@/assets/gallery/vista-aerea-resultado-final.jpg';
+
+import img23 from '@/assets/gallery/resultado-final-claraboyas.jpg';
+import img26 from '@/assets/gallery/primer-alligatorhide.jpg';
+import img27 from '@/assets/gallery/aplicacion-rodillo-primer.jpg';
+import img28 from '@/assets/gallery/claraboyas-antes-tratamiento.jpg';
+
+const galleryImages = [
+  img01, img02, img03, img14, img26, img27, img09, img08, img11, img04, img05,
+  img10, img12, img06, img13, img07, img28, img15, img16, img18,
+  img19, img20, img21, img23,
 ];
-
-const categories = ['Todos', 'Techos', 'Terrazas', 'Comercial', 'Proceso'];
 ---
 
 <Layout
@@ -26,222 +42,178 @@ const categories = ['Todos', 'Techos', 'Terrazas', 'Comercial', 'Proceso'];
   canonical="/galeria"
 >
   <!-- Hero Section -->
-  <section class="pt-32 pb-16 bg-secondary pattern-crocodile">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl">
-        <span class="inline-block text-primary-foreground text-sm font-semibold uppercase tracking-wider mb-4">
-          Nuestro trabajo
-        </span>
-        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-secondary-foreground mb-6">
+  <section class="pt-32 pb-14 relative overflow-hidden bg-[#0A1F16]">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-br from-[#0A1F16] via-[#153728] to-[#0A1F16]"></div>
+      <div class="absolute bottom-0 left-0 w-1/4 h-full opacity-[0.04] pattern-crocodile"></div>
+      <div class="absolute -top-20 right-1/4 w-[500px] h-[500px] bg-[#4CBFA6]/15 rounded-full blur-[150px] animate-pulse-subtle"></div>
+      <div class="absolute bottom-0 left-0 w-[400px] h-[350px] bg-[#4CBFA6]/10 rounded-full blur-[130px]"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[200px] bg-[#4CBFA6]/[0.04] rounded-full blur-[100px]"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-4xl">
+        <h1 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-[1.05] tracking-tight animate-fade-up">
           Galería de proyectos
         </h1>
-        <p class="text-xl text-secondary-foreground/70 leading-relaxed">
-          Conozca algunos de nuestros trabajos realizados en techos, terrazas y otras superficies.
+        <p class="text-white/60 text-lg md:text-xl leading-relaxed max-w-3xl animate-fade-up" style="animation-delay: 100ms">
+          Conozca algunos de nuestros trabajos realizados en techos, terrazas y otras superficies. Cada proyecto refleja nuestro compromiso con la excelencia.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Filter -->
-  <section class="py-8 bg-background border-b border-border">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-wrap gap-3" id="gallery-filters">
-        {categories.map((category, i) => (
-          <button
-            data-gallery-filter={category}
-            class={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
-              i === 0
-                ? 'bg-primary text-primary-foreground'
-                : 'bg-muted text-muted-foreground hover:bg-muted/80'
-            }`}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- Gallery Grid -->
-  <section class="section-padding bg-background">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="gallery-grid">
-        {galleryItems.map((item) => (
-          <div
-            class="group relative aspect-[4/3] overflow-hidden rounded-xl cursor-pointer card-premium"
-            data-gallery-item
-            data-category={item.category}
-            data-title={item.title}
-            data-description={item.description}
-          >
+  <section class="section-padding bg-background pb-0 relative overflow-hidden">
+    <div class="absolute top-0 left-0 right-0 pointer-events-none z-10 leading-none -mt-px">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-16 lg:h-24 block">
+        <defs>
+          <linearGradient id="gal-wave" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#153728" />
+            <stop offset="100%" stop-color="#0A1F16" />
+          </linearGradient>
+          <linearGradient id="gal-wave-fade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0A1F16" />
+            <stop offset="100%" stop-color="hsl(0, 0%, 98%)" />
+          </linearGradient>
+        </defs>
+        <path d="M0,0 L1440,0 L1440,100 L0,100 Z" fill="url(#gal-wave-fade)" />
+        <path d="M0,40 C480,80 960,10 1440,50 L1440,0 L0,0 Z" fill="url(#gal-wave)" />
+      </svg>
+    </div>
+
+    <div class="absolute inset-0 pointer-events-none opacity-[0.02]">
+      <div class="absolute top-0 left-0 w-full h-full pattern-crocodile"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Main Preview -->
+      <div class="max-w-5xl mx-auto mb-8">
+        <div class="relative aspect-[16/9] overflow-hidden rounded-2xl ring-1 ring-foreground/10 shadow-2xl bg-foreground/5" id="gallery-preview-wrapper">
+          {galleryImages.map((image, index) => (
             <Image
-              src={item.image}
-              alt={item.title}
-              widths={[300, 400, 600]}
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+              src={image}
+              alt={`Proyecto AlligatorHide ${index + 1}`}
+              widths={[800, 1200, 1600]}
+              sizes="(max-width: 1280px) 100vw, 1120px"
               format="webp"
-              loading="lazy"
+              loading={index === 0 ? 'eager' : 'lazy'}
               decoding="async"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              class={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${index === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+              data-preview-img={index}
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div class="w-12 h-12 bg-primary-foreground/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                <svg class="w-6 h-6 text-secondary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-              </div>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-              <span class="text-primary-foreground/80 text-xs uppercase tracking-wider">{item.category}</span>
-              <h3 class="text-secondary-foreground font-semibold mt-1">{item.title}</h3>
-            </div>
+          ))}
+          <!-- Nav arrows -->
+          <button
+            id="preview-prev"
+            class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-black/30 backdrop-blur-md text-white hover:bg-black/50 transition-colors rounded-full flex items-center justify-center border border-white/10"
+            aria-label="Anterior"
+          >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6" /></svg>
+          </button>
+          <button
+            id="preview-next"
+            class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-black/30 backdrop-blur-md text-white hover:bg-black/50 transition-colors rounded-full flex items-center justify-center border border-white/10"
+            aria-label="Siguiente"
+          >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6" /></svg>
+          </button>
+          <!-- Counter -->
+          <div class="absolute bottom-4 right-4 z-10 bg-black/40 backdrop-blur-md text-white/70 text-xs font-medium px-3 py-1.5 rounded-full border border-white/10" id="preview-counter">
+            1 / {galleryImages.length}
           </div>
-        ))}
+        </div>
       </div>
+
+      <!-- Thumbnails -->
+      <div class="max-w-5xl mx-auto">
+        <div class="flex gap-3 overflow-x-auto pb-4 scrollbar-thin" id="gallery-thumbs">
+          {galleryImages.map((image, index) => (
+            <button
+              class={`relative flex-shrink-0 w-20 h-16 sm:w-24 sm:h-[72px] overflow-hidden rounded-xl cursor-pointer transition-all duration-300 ${index === 0 ? 'ring-2 ring-[#4CBFA6] shadow-lg shadow-[#4CBFA6]/20 opacity-100' : 'ring-1 ring-foreground/10 opacity-50 hover:opacity-80'}`}
+              data-thumb={index}
+            >
+              <Image
+                src={image}
+                alt={`Miniatura ${index + 1}`}
+                widths={[100, 150]}
+                sizes="96px"
+                format="webp"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Separador decorativo -->
+    <div class="mt-20 mb-0">
+      <svg viewBox="0 0 1440 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-28 lg:h-40 block">
+        <path d="M0,90 C360,150 720,20 1080,100 C1260,135 1380,90 1440,90 L1440,180 L0,180 Z" fill="#0A1F16" />
+      </svg>
     </div>
   </section>
 
-  <!-- Modal -->
-  <div id="gallery-modal" class="fixed inset-0 z-50 bg-secondary/95 flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true">
-    <div class="bg-card rounded-2xl overflow-hidden max-w-4xl w-full shadow-2xl relative" id="gallery-modal-content">
-      <button
-        id="gallery-close"
-        class="absolute top-4 right-4 z-10 w-9 h-9 bg-secondary/60 backdrop-blur-sm text-secondary-foreground hover:bg-secondary transition-colors rounded-full flex items-center justify-center"
-        aria-label="Cerrar"
-      >
-        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
-      </button>
-      <button
-        id="gallery-prev"
-        class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-secondary/60 backdrop-blur-sm text-secondary-foreground hover:bg-secondary transition-colors rounded-full flex items-center justify-center"
-        aria-label="Anterior"
-      >
-        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6" /></svg>
-      </button>
-      <button
-        id="gallery-next"
-        class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-secondary/60 backdrop-blur-sm text-secondary-foreground hover:bg-secondary transition-colors rounded-full flex items-center justify-center"
-        aria-label="Siguiente"
-      >
-        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6" /></svg>
-      </button>
-      <img id="gallery-modal-img" src="" alt="" class="w-full aspect-video object-cover" />
-      <div class="p-6 lg:p-8">
-        <span id="gallery-modal-category" class="text-primary text-sm font-medium uppercase tracking-wider"></span>
-        <h3 id="gallery-modal-title" class="font-display text-2xl font-bold text-foreground mt-2 mb-3"></h3>
-        <p id="gallery-modal-desc" class="text-muted-foreground"></p>
-        <p id="gallery-modal-counter" class="text-muted-foreground/50 text-xs mt-4"></p>
-      </div>
-    </div>
-  </div>
 </Layout>
 
 <script>
   function initGallery() {
-    const filters = document.querySelectorAll<HTMLButtonElement>('[data-gallery-filter]');
-    const items = document.querySelectorAll<HTMLElement>('[data-gallery-item]');
-    const modal = document.getElementById('gallery-modal');
-    const modalImg = document.getElementById('gallery-modal-img') as HTMLImageElement;
-    const modalTitle = document.getElementById('gallery-modal-title');
-    const modalDesc = document.getElementById('gallery-modal-desc');
-    const modalCategory = document.getElementById('gallery-modal-category');
-    const modalCounter = document.getElementById('gallery-modal-counter');
-    const modalContent = document.getElementById('gallery-modal-content');
-    const closeBtn = document.getElementById('gallery-close');
-    const prevBtn = document.getElementById('gallery-prev');
-    const nextBtn = document.getElementById('gallery-next');
+    const previewImgs = document.querySelectorAll<HTMLElement>('[data-preview-img]');
+    const thumbs = document.querySelectorAll<HTMLElement>('[data-thumb]');
+    const counter = document.getElementById('preview-counter');
+    const prevBtn = document.getElementById('preview-prev');
+    const nextBtn = document.getElementById('preview-next');
+    const thumbsContainer = document.getElementById('gallery-thumbs');
 
-    if (!modal) return;
+    if (!previewImgs.length) return;
 
-    let activeCategory = 'Todos';
-    let selectedIndex = -1;
-    let visibleItems: HTMLElement[] = [];
+    let current = 0;
+    const total = previewImgs.length;
 
-    function updateFilter(category: string) {
-      activeCategory = category;
-      filters.forEach(f => {
-        const isActive = f.dataset.galleryFilter === category;
-        f.className = `px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
-          isActive ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/80'
-        }`;
+    function activate(index: number) {
+      previewImgs.forEach((img, i) => {
+        img.classList.toggle('opacity-100', i === index);
+        img.classList.toggle('opacity-0', i !== index);
+        img.classList.toggle('pointer-events-none', i !== index);
       });
 
-      items.forEach(item => {
-        const show = category === 'Todos' || item.dataset.category === category;
-        item.style.display = show ? '' : 'none';
+      thumbs.forEach((thumb, i) => {
+        if (i === index) {
+          thumb.className = thumb.className
+            .replace('ring-1 ring-foreground/10 opacity-50 hover:opacity-80', 'ring-2 ring-[#4CBFA6] shadow-lg shadow-[#4CBFA6]/20 opacity-100');
+        } else {
+          thumb.className = thumb.className
+            .replace('ring-2 ring-[#4CBFA6] shadow-lg shadow-[#4CBFA6]/20 opacity-100', 'ring-1 ring-foreground/10 opacity-50 hover:opacity-80');
+        }
       });
 
-      visibleItems = Array.from(items).filter(item =>
-        activeCategory === 'Todos' || item.dataset.category === activeCategory
-      );
+      if (counter) counter.textContent = `${index + 1} / ${total}`;
+      current = index;
+
+      // Scroll active thumb into view
+      const activeThumb = thumbs[index] as HTMLElement;
+      if (activeThumb && thumbsContainer) {
+        activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
     }
 
-    function openModal(index: number) {
-      selectedIndex = index;
-      const item = visibleItems[index];
-      if (!item) return;
-
-      const img = item.querySelector('img');
-      if (img && modalImg) modalImg.src = img.src;
-      if (modalImg) modalImg.alt = item.dataset.title || '';
-      if (modalTitle) modalTitle.textContent = item.dataset.title || '';
-      if (modalDesc) modalDesc.textContent = item.dataset.description || '';
-      if (modalCategory) modalCategory.textContent = item.dataset.category || '';
-      if (modalCounter) modalCounter.textContent = `${index + 1} / ${visibleItems.length} · Usa las flechas o ← → para navegar`;
-
-      modal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      modal.classList.add('hidden');
-      document.body.style.overflow = '';
-      selectedIndex = -1;
-    }
-
-    function goNext() {
-      if (selectedIndex === -1) return;
-      openModal((selectedIndex + 1) % visibleItems.length);
-    }
-
-    function goPrev() {
-      if (selectedIndex === -1) return;
-      openModal((selectedIndex - 1 + visibleItems.length) % visibleItems.length);
-    }
-
-    // Filters
-    filters.forEach(f => {
-      f.addEventListener('click', () => updateFilter(f.dataset.galleryFilter || 'Todos'));
-    });
-
-    // Click to open
-    items.forEach(item => {
-      item.addEventListener('click', () => {
-        const index = visibleItems.indexOf(item);
-        if (index !== -1) openModal(index);
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const index = parseInt(thumb.dataset.thumb || '0', 10);
+        activate(index);
       });
     });
 
-    // Close
-    closeBtn?.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-    modalContent?.addEventListener('click', (e) => e.stopPropagation());
+    prevBtn?.addEventListener('click', () => activate((current - 1 + total) % total));
+    nextBtn?.addEventListener('click', () => activate((current + 1) % total));
 
-    // Navigation
-    prevBtn?.addEventListener('click', goPrev);
-    nextBtn?.addEventListener('click', goNext);
-
-    // Keyboard
     document.addEventListener('keydown', (e) => {
-      if (selectedIndex === -1) return;
-      if (e.key === 'Escape') closeModal();
-      if (e.key === 'ArrowRight') goNext();
-      if (e.key === 'ArrowLeft') goPrev();
+      if (e.key === 'ArrowRight') activate((current + 1) % total);
+      if (e.key === 'ArrowLeft') activate((current - 1 + total) % total);
     });
-
-    // Initial setup
-    updateFilter('Todos');
   }
 
   initGallery();

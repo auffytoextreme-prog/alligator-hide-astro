@@ -1,7 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import WhatsAppButton from '../components/WhatsAppButton.astro';
+
 import MobileContactBar from '../components/MobileContactBar.astro';
 import '../styles/global.css';
 
@@ -124,7 +124,7 @@ const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
     <meta name="view-transition" content="same-origin" />
   </head>
 
-  <body>
+  <body class="bg-background">
     <!-- Skip to content (A11Y) -->
     <a
       href="#main-content"
@@ -140,7 +140,7 @@ const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
     </main>
 
     <Footer />
-    <WhatsAppButton />
+
     <MobileContactBar />
 
     <!-- Analytics: track page views on navigation -->

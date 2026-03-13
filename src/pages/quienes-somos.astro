@@ -23,6 +23,7 @@ const values = [
     icon: `<circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />`,
   },
 ];
+
 ---
 
 <Layout
@@ -30,113 +31,179 @@ const values = [
   description="Conozca la historia de AlligatorHide Uruguay: tecnología importada de EE.UU., años de experiencia en impermeabilización y nuestro compromiso con la calidad y la garantía."
   canonical="/quienes-somos"
 >
-  <!-- Hero Section -->
-  <section class="pt-32 pb-20 bg-secondary pattern-crocodile">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl">
-        <span class="inline-block text-primary-foreground text-sm font-semibold uppercase tracking-wider mb-4">
-          Nuestra historia
-        </span>
-        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-secondary-foreground mb-6">
-          Quiénes somos
+  <!-- Hero Section — warm dark + amber accent -->
+  <section class="pt-32 pb-14 relative overflow-hidden bg-[#1A150D]">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-br from-[#1A150D] via-[#2A2210] to-[#1A150D]"></div>
+      <div class="absolute top-0 left-0 w-1/2 h-full opacity-[0.04] pattern-crocodile"></div>
+      <div class="absolute -top-20 -left-20 w-[500px] h-[500px] bg-[#D4A843]/15 rounded-full blur-[150px] animate-pulse-subtle"></div>
+      <div class="absolute bottom-0 right-0 w-[450px] h-[350px] bg-[#D4A843]/10 rounded-full blur-[130px]"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[200px] bg-[#D4A843]/[0.04] rounded-full blur-[100px]"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-4xl">
+        <h1 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-[1.05] tracking-tight animate-fade-up">
+          Sobre Nosotros
         </h1>
-        <p class="text-xl text-secondary-foreground/70 leading-relaxed">
-          Conozca la historia detrás de AlligatorHide y nuestro compromiso con la calidad.
+        <p class="text-white/60 text-lg md:text-xl leading-relaxed max-w-3xl animate-fade-up" style="animation-delay: 100ms">
+          Conozca la historia detrás de AlligatorHide y nuestro compromiso con la calidad, la innovación y la protección definitiva de su propiedad.
         </p>
       </div>
     </div>
   </section>
 
   <!-- Story Section -->
-  <section class="section-padding bg-background">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <div class="scroll-animate">
-          <h2 class="font-display text-3xl sm:text-4xl font-bold text-foreground mb-6">
-            Experiencia que se traduce en resultados
-          </h2>
-          <div class="text-muted-foreground space-y-6 text-lg">
-            <p class="leading-relaxed">
-              Tras años de experiencia en el rubro constructivo norteamericano, con particular interés en techos, nuestro fundador desarrolló la combinación exacta de elementos que conforman este sistema impermeable, resistente y superflexible.
-            </p>
-            <p class="leading-relaxed">
-              Llegamos a Uruguay abocados en traer al país la propuesta de calidad y durabilidad que AlligatorHide ya ofrece en Estados Unidos. Allí, empresas, constructores, arquitectos y particulares nos eligen para impermeabilizar sus techos y otras superficies.
-            </p>
-            <p class="leading-relaxed">
-              Nuestro compromiso es brindar a cada cliente la misma calidad y servicio que nos ha distinguido en el mercado estadounidense, adaptado a las necesidades específicas del mercado uruguayo.
-            </p>
-          </div>
-        </div>
+  <section class="py-24 bg-background relative overflow-hidden">
+    <div class="absolute top-0 left-0 right-0 pointer-events-none z-10 leading-none -mt-px">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-10 lg:h-14 block">
+        <defs>
+          <linearGradient id="qs-wave" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#2A2210" />
+            <stop offset="100%" stop-color="#1A150D" />
+          </linearGradient>
+        </defs>
+        <path d="M0,40 C480,0 960,60 1440,20 L1440,0 L0,0 Z" fill="url(#qs-wave)" />
+      </svg>
+    </div>
 
-        <div class="bg-muted rounded-2xl p-8 lg:p-10 scroll-animate delay-200">
-          <div class="grid grid-cols-2 gap-6">
-            <div class="bg-card rounded-xl p-6 text-center shadow-sm">
-              <div class="text-4xl font-display font-bold text-primary mb-2">18</div>
-              <p class="text-muted-foreground text-sm">Años de durabilidad comprobada</p>
-            </div>
-            <div class="bg-card rounded-xl p-6 text-center shadow-sm">
-              <div class="text-4xl font-display font-bold text-primary mb-2">EE.UU.</div>
-              <p class="text-muted-foreground text-sm">Origen del sistema</p>
-            </div>
-            <div class="bg-card rounded-xl p-6 text-center shadow-sm">
-              <div class="text-4xl font-display font-bold text-primary mb-2">+6</div>
-              <p class="text-muted-foreground text-sm">Años de extensión disponible</p>
-            </div>
-            <div class="bg-card rounded-xl p-6 text-center shadow-sm">
-              <div class="text-4xl font-display font-bold text-primary mb-2">100%</div>
-              <p class="text-muted-foreground text-sm">Compromiso con la calidad</p>
-            </div>
-          </div>
+    <div class="absolute inset-0 pointer-events-none opacity-[0.02]">
+      <div class="absolute top-0 left-0 w-full h-full pattern-crocodile"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16 scroll-animate">
+        <span class="inline-block text-primary text-sm font-bold uppercase tracking-[0.2em] mb-4">
+          Nuestra Trayectoria
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">
+          Experiencia que se traduce en resultados
+        </h2>
+        <div class="h-1.5 w-16 bg-primary mx-auto mb-8 rounded-full"></div>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="text-muted-foreground space-y-6 text-lg scroll-animate delay-200">
+          <p class="leading-relaxed">
+            Tras años de experiencia en el rubro constructivo norteamericano, con particular interés en techos, nuestro fundador desarrolló la combinación exacta de elementos que conforman este sistema impermeable, resistente y superflexible.
+          </p>
+          <p class="leading-relaxed">
+            Llegamos a Uruguay abocados en traer al país la propuesta de calidad y durabilidad que AlligatorHide ya ofrece en Estados Unidos. Allí, empresas, constructores, arquitectos y particulares nos eligen para impermeabilizar sus techos y otras superficies.
+          </p>
+          <p class="leading-relaxed">
+            Nuestro compromiso es brindar a cada cliente la misma calidad y servicio que nos ha distinguido en el mercado estadounidense, adaptado a las necesidades específicas del mercado uruguayo.
+          </p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision — warm dark -->
+  <section class="py-24 bg-[#1A150D] relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-b from-[#1A150D] via-[#2A2210] to-[#1A150D]"></div>
+      <div class="absolute top-0 left-0 right-0 z-10 leading-none -mt-px">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-10 lg:h-14 block">
+          <path d="M0,30 C360,60 1080,0 1440,30 L1440,0 L0,0 Z" fill="hsl(0 0% 98%)" />
+        </svg>
+      </div>
+      <div class="pattern-crocodile absolute inset-0 opacity-[0.05]"></div>
+      <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-[#D4A843]/10 rounded-full blur-[120px]"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16 scroll-animate">
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
+          Propósito
+        </h2>
+        <div class="h-1.5 w-16 bg-[#D4A843] mx-auto rounded-full shadow-[0_0_15px_rgba(212,168,67,0.3)]"></div>
+      </div>
+
+      <div class="max-w-4xl mx-auto grid md:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-12 items-start scroll-animate">
+        <div class="text-center md:text-left">
+          <h3 class="font-display text-xl font-bold text-white mb-4">Nuestra misión</h3>
+          <p class="text-white/55 leading-relaxed">
+            Proporcionar soluciones de impermeabilización de la más alta calidad, respaldadas por garantía contractual y servicio técnico continuo, para proteger las propiedades de nuestros clientes de manera definitiva.
+          </p>
+        </div>
+
+        <div class="hidden md:block w-px self-stretch bg-gradient-to-b from-transparent via-white/15 to-transparent"></div>
+
+        <div class="text-center md:text-left">
+          <h3 class="font-display text-xl font-bold text-white mb-4">Nuestra visión</h3>
+          <p class="text-white/55 leading-relaxed">
+            Ser la referencia en impermeabilización premium en Uruguay, reconocidos por la durabilidad de nuestro sistema, la calidad de nuestro servicio y el compromiso con cada proyecto.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 right-0 pointer-events-none z-10 leading-none -mb-px">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-10 lg:h-14 block">
+        <path d="M0,30 C360,0 1080,60 1440,30 L1440,60 L0,60 Z" fill="hsl(0 0% 98%)" />
+      </svg>
     </div>
   </section>
 
   <!-- Values Section -->
-  <section class="section-padding bg-muted pattern-crocodile">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-animate">
-        <span class="inline-block text-primary text-sm font-semibold uppercase tracking-wider mb-4">
-          Lo que nos define
-        </span>
-        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+  <section class="py-24 bg-background relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none opacity-[0.02]">
+      <div class="absolute top-0 left-0 w-full h-full pattern-crocodile"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-20 scroll-animate">
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">
           Nuestros valores
         </h2>
+        <div class="h-1.5 w-16 bg-primary mx-auto mb-8 rounded-full"></div>
+        <p class="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
+          Los pilares que guían cada proyecto y definen nuestra forma de trabajar.
+        </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Mobile: stacked layout -->
+      <div class="flex flex-col items-center gap-12 lg:hidden max-w-sm mx-auto">
         {values.map((value, i) => (
-          <div class="card-premium p-6 text-center hover:-translate-y-1 scroll-animate" style={`transition-delay: ${(i + 1) * 100}ms`}>
-            <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
-              <svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" set:html={value.icon} />
+          <div class="scroll-animate text-center" style={`animation-delay: ${(i + 1) * 100}ms`}>
+            <div class="w-14 h-14 mx-auto mb-5 flex items-center justify-center">
+              <svg class="w-10 h-10 text-primary drop-shadow-[0_0_8px_rgba(212,168,67,0.25)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" set:html={value.icon} />
             </div>
-            <h3 class="font-display text-lg font-semibold text-foreground mb-3">{value.title}</h3>
+            <h3 class="font-display text-lg font-bold text-foreground mb-2">{value.title}</h3>
             <p class="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
+            {i < values.length - 1 && (
+              <div class="mt-12 w-px h-12 mx-auto bg-gradient-to-b from-transparent via-primary/20 to-transparent"></div>
+            )}
           </div>
         ))}
       </div>
-    </div>
-  </section>
 
-  <!-- Mission Section -->
-  <section class="section-padding bg-background">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="bg-secondary rounded-2xl p-8 lg:p-10 text-secondary-foreground scroll-animate">
-            <h3 class="font-display text-2xl font-bold mb-4">Nuestra misión</h3>
-            <p class="text-secondary-foreground/80 leading-relaxed">
-              Proporcionar soluciones de impermeabilización de la más alta calidad, respaldadas por garantía contractual y servicio técnico continuo, para proteger las propiedades de nuestros clientes de manera definitiva.
-            </p>
-          </div>
-          <div class="bg-primary rounded-2xl p-8 lg:p-10 text-primary-foreground scroll-animate delay-200">
-            <h3 class="font-display text-2xl font-bold mb-4">Nuestra visión</h3>
-            <p class="text-primary-foreground/80 leading-relaxed">
-              Ser la referencia en impermeabilización premium en Uruguay, reconocidos por la durabilidad de nuestro sistema, la calidad de nuestro servicio y el compromiso con cada proyecto.
-            </p>
-          </div>
-        </div>
+      <!-- Desktop: horizontal layout with vertical dividers -->
+      <div class="hidden lg:flex items-start justify-center max-w-6xl mx-auto scroll-animate">
+        {values.map((value, i) => (
+          <>
+            <div class="flex-1 text-center px-8 group">
+              <div class="w-14 h-14 mx-auto mb-6 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                <svg class="w-10 h-10 text-primary drop-shadow-[0_0_8px_rgba(212,168,67,0.25)] transition-all duration-500 group-hover:drop-shadow-[0_0_14px_rgba(212,168,67,0.4)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" set:html={value.icon} />
+              </div>
+              <h3 class="font-display text-lg font-bold text-foreground mb-3">{value.title}</h3>
+              <p class="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
+            </div>
+            {i < values.length - 1 && (
+              <div class="w-px self-stretch my-2 bg-gradient-to-b from-transparent via-primary/15 to-transparent flex-shrink-0"></div>
+            )}
+          </>
+        ))}
       </div>
     </div>
+
   </section>
+
+  <!-- Onda decorativa final -->
+  <div class="bg-background leading-none -mb-px">
+    <svg viewBox="0 0 1440 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-28 lg:h-40 block">
+      <path d="M0,90 C360,150 720,20 1080,100 C1260,135 1380,90 1440,90 L1440,180 L0,180 Z" fill="#1A150D" />
+    </svg>
+  </div>
+
 </Layout>
