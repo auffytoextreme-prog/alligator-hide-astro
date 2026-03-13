@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/react/ContactForm';
+---
+
+<Layout
+  title="Solicite su Presupuesto Gratuito | AlligatorHide Uruguay"
+  description="Contacte a AlligatorHide Uruguay para impermeabilización profesional de techos y terrazas. Presupuesto sin costo, visita gratuita. Atendemos en Montevideo y todo Uruguay."
+  canonical="/contacto"
+>
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 bg-secondary pattern-crocodile">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <span class="inline-block text-primary-foreground/70 text-sm font-semibold uppercase tracking-wider mb-4">
+          Estamos para ayudarlo
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl text-secondary-foreground mb-6">
+          Contáctenos
+        </h1>
+        <p class="text-xl text-secondary-foreground/70 leading-relaxed">
+          Solicite su diagnóstico gratuito o programe una visita para ver un techo de muestra.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section-padding bg-background">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <ContactForm client:visible />
+    </div>
+  </section>
+
+  <!-- Map -->
+  <section class="bg-background py-6">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+      <div class="rounded-xl overflow-hidden shadow-md">
+        <iframe
+          src="https://maps.google.com/maps?q=Jose+Enrique+Rod%C3%B3+2082%2C+Montevideo%2C+Uruguay&z=16&output=embed"
+          width="100%"
+          height="240"
+          style="border: 0"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación AlligatorHide Uruguay - José Enrique Rodó 2082, Montevideo"
+        ></iframe>
+      </div>
+      <p class="text-center text-muted-foreground text-sm mt-3 flex items-center justify-center gap-1">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+        José Enrique Rodó 2082, Montevideo, Uruguay
+      </p>
+    </div>
+  </section>
+</Layout>

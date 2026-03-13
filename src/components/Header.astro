@@ -1,0 +1,170 @@
+---
+import logoColor from '@/assets/logo-alligatorhide.png';
+import logoWhite from '@/assets/logo-white.png';
+
+const navigation = [
+  { name: 'Inicio', href: '/' },
+  { name: 'Productos', href: '/productos' },
+  { name: 'Galería', href: '/galeria' },
+  { name: 'Quiénes Somos', href: '/quienes-somos' },
+  { name: 'Contacto', href: '/contacto' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 left-0 right-0 z-50 transition-[padding,background-color,box-shadow] duration-300 bg-transparent backdrop-blur-[2px] py-5"
+>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex-shrink-0 transition-all duration-300">
+        <img
+          id="logo-white"
+          src={logoWhite.src}
+          alt="AlligatorHide"
+          class="w-auto h-10 md:h-[3.15rem] transition-all duration-300"
+        />
+        <img
+          id="logo-color"
+          src={logoColor.src}
+          alt="AlligatorHide"
+          class="w-auto h-9 md:h-11 transition-all duration-300 hidden"
+        />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-8">
+        {navigation.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'nav-link text-sm font-medium uppercase tracking-wide transition-colors duration-200 link-underline',
+              currentPath === item.href
+                ? 'text-primary-foreground nav-active'
+                : 'text-primary-foreground/80 hover:text-primary-foreground',
+            ]}
+          >
+            {item.name}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="lg:hidden p-2.5 text-primary-foreground"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+      >
+        <svg id="icon-menu" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav id="mobile-menu" class="lg:hidden hidden mt-4 pb-6 border-t border-border/20 pt-4 animate-fade-in">
+      <div class="flex flex-col gap-3">
+        {navigation.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'text-base font-medium uppercase tracking-wide py-3 transition-colors',
+              currentPath === item.href ? 'text-primary' : 'text-secondary hover:text-primary',
+            ]}
+          >
+            {item.name}
+          </a>
+        ))}
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-overlay" class="fixed inset-0 z-40 bg-black/40 lg:hidden hidden transition-opacity"></div>
+
+<script is:inline>
+(function() {
+  var header = document.getElementById('site-header');
+  var btn = document.getElementById('mobile-menu-btn');
+  var menu = document.getElementById('mobile-menu');
+  var overlay = document.getElementById('mobile-overlay');
+  var logoWhite = document.getElementById('logo-white');
+  var logoColor = document.getElementById('logo-color');
+  var iconMenu = document.getElementById('icon-menu');
+  var iconClose = document.getElementById('icon-close');
+  var isOpen = false;
+  var isScrolled = false;
+
+  function updateHeader() {
+    var scrolled = window.scrollY > 20;
+    if (scrolled === isScrolled && !isOpen) return;
+    isScrolled = scrolled;
+
+    if (scrolled || isOpen) {
+      header.classList.remove('bg-transparent', 'backdrop-blur-[2px]', 'py-5');
+      header.classList.add('bg-background/95', 'backdrop-blur-xl', 'shadow-sm', 'border-b', 'border-foreground/[0.06]', 'py-2');
+      logoWhite.classList.add('hidden');
+      logoColor.classList.remove('hidden');
+      btn.classList.remove('text-primary-foreground');
+      btn.classList.add('text-foreground');
+      document.querySelectorAll('.nav-link').forEach(function(el) {
+        if (el.classList.contains('nav-active')) {
+          el.classList.remove('text-primary-foreground');
+          el.classList.add('text-primary');
+        } else {
+          el.classList.remove('text-primary-foreground/80', 'hover:text-primary-foreground');
+          el.classList.add('text-secondary', 'hover:text-primary');
+        }
+      });
+    } else {
+      header.classList.add('bg-transparent', 'backdrop-blur-[2px]', 'py-5');
+      header.classList.remove('bg-background/95', 'backdrop-blur-xl', 'shadow-sm', 'border-b', 'border-foreground/[0.06]', 'py-2');
+      logoWhite.classList.remove('hidden');
+      logoColor.classList.add('hidden');
+      btn.classList.add('text-primary-foreground');
+      btn.classList.remove('text-foreground');
+      document.querySelectorAll('.nav-link').forEach(function(el) {
+        if (el.classList.contains('nav-active')) {
+          el.classList.add('text-primary-foreground');
+          el.classList.remove('text-primary');
+        } else {
+          el.classList.add('text-primary-foreground/80', 'hover:text-primary-foreground');
+          el.classList.remove('text-secondary', 'hover:text-primary');
+        }
+      });
+    }
+  }
+
+  function toggleMenu() {
+    isOpen = !isOpen;
+    menu.classList.toggle('hidden');
+    overlay.classList.toggle('hidden');
+    iconMenu.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    btn.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    updateHeader();
+  }
+
+  btn.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  menu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (isOpen) toggleMenu();
+    });
+  });
+
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
+})();
+</script>

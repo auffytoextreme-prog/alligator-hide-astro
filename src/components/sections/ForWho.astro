@@ -1,0 +1,185 @@
+---
+const audiences = [
+  {
+    id: 'residencias',
+    title: 'Casas y Residencias',
+    description: 'Solucione definitivamente goteras, humedad o moho. Proteja el valor de su hogar con una impermeabilización de calidad y sin obra húmeda.',
+    features: ['Diagnóstico sin costo', 'Garantía extendida 18 años', 'Cero escombros'],
+    color: 'from-[#4CBFA6]/20 to-transparent',
+  },
+  {
+    id: 'corporativo',
+    title: 'Edificios',
+    description: 'Soluciones duraderas para consorcios y administraciones que buscan resolver filtraciones en azoteas sin mantenimiento constante y con total trazabilidad.',
+    features: ['Documentación técnica', 'Trabajo rápido', 'Respaldo técnico'],
+    color: 'from-[#2F8EAF]/20 to-transparent',
+  },
+  {
+    id: 'industrial',
+    title: 'Galpones Industriales',
+    description: 'Ideales para centros logísticos y fábricas. Aísle el interior, proteja la mercadería y reduzca la temperatura drásticamente mejorando el clima laboral.',
+    features: ['Alta reflectividad térmica', 'Sellado perimetral de chapas', 'Garantía 18 años'],
+    color: 'from-[#3DAF8E]/20 to-transparent',
+  },
+  {
+    id: 'hoteles',
+    title: 'Hoteles',
+    description: 'Maximice el confort de sus huéspedes. Al eliminar el calor excesivo del techo, reduce fuertemente sus costos fijos mensuales en climatización.',
+    features: ['Gran ahorro energético', 'Sin interrupción de servicio', 'Factibilidad técnica'],
+    color: 'from-[#5BC4E0]/20 to-transparent',
+  },
+];
+---
+
+<section class="py-20 lg:py-24 bg-secondary pattern-crocodile relative overflow-hidden">
+  <!-- Decorative Background -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-primary/10 via-transparent to-primary/5"></div>
+    <div class="absolute -top-24 right-1/4 w-96 h-96 bg-[#4CBFA6]/10 rounded-full blur-[120px]"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-12 scroll-animate">
+      <span class="inline-block text-[#4CBFA6] text-sm font-bold uppercase tracking-[0.2em] mb-3">
+        Soluciones a medida
+      </span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-[1.1]">
+        ¿Para quién es?
+      </h2>
+      <div class="h-1.5 w-20 bg-primary mx-auto mb-6 rounded-full"></div>
+      <p class="text-white/60 max-w-2xl mx-auto text-lg leading-relaxed">
+        Nuestra tecnología se adapta a diferentes escalas, garantizando el mismo bloque térmico y sellado absoluto tanto en hogares como en grandes complejos.
+      </p>
+    </div>
+
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 scroll-animate delay-200">
+
+      <!-- Left Side: Interactive Navigation Menu -->
+      <div class="lg:col-span-5 flex flex-col space-y-2" id="forwho-tabs" role="tablist">
+        {audiences.map((audience, i) => (
+          <button
+            role="tab"
+            aria-selected={i === 0 ? 'true' : 'false'}
+            aria-controls={`forwho-panel-${audience.id}`}
+            data-forwho-tab={audience.id}
+            class={`group flex items-center gap-4 w-full text-left p-3 sm:p-4 rounded-2xl transition-all duration-500 ease-out border ${
+              i === 0
+                ? 'bg-white/10 border-white/20 shadow-md scale-[1.02]'
+                : 'bg-transparent border-transparent hover:bg-white/5'
+            }`}
+          >
+            <h3 class={`font-display text-lg font-semibold transition-colors duration-500 ${
+              i === 0 ? 'text-white' : 'text-white/50 group-hover:text-white/80'
+            }`}>
+              {audience.title}
+            </h3>
+            <svg
+              class={`w-5 h-5 ml-auto text-primary ${i === 0 ? '' : 'hidden'}`}
+              data-forwho-arrow
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
+        ))}
+      </div>
+
+      <!-- Right Side: Dynamic Content Display -->
+      <div class="lg:col-span-7 relative">
+        {audiences.map((audience, i) => (
+          <div
+            id={`forwho-panel-${audience.id}`}
+            role="tabpanel"
+            data-forwho-panel={audience.id}
+            class={`relative h-full w-full bg-white/5 rounded-[2rem] p-5 sm:p-7 overflow-hidden border border-white/10 shadow-sm min-h-[300px] ${
+              i === 0 ? '' : 'hidden'
+            }`}
+          >
+            <!-- Dynamic subtle gradient glow -->
+            <div class={`absolute inset-0 bg-gradient-to-br ${audience.color} opacity-30 pointer-events-none`}></div>
+
+            <!-- Content -->
+            <div class="relative z-10 animate-fade-up">
+              <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mb-4 leading-[1.1]">
+                {audience.title}
+              </h3>
+
+              <p class="text-white/60 text-base mb-6 leading-relaxed max-w-xl">
+                {audience.description}
+              </p>
+
+              <ul class="space-y-3">
+                {audience.features.map((feature) => (
+                  <li class="flex items-start gap-3 text-white/80">
+                    <div class="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                    </div>
+                    <span class="text-sm font-medium">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initForWhoTabs() {
+    const tabs = document.querySelectorAll<HTMLButtonElement>('[data-forwho-tab]');
+    const panels = document.querySelectorAll<HTMLDivElement>('[data-forwho-panel]');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.dataset.forwhoTab;
+
+        // Update tabs
+        tabs.forEach((t) => {
+          const isActive = t.dataset.forwhoTab === targetId;
+          t.setAttribute('aria-selected', String(isActive));
+          t.className = `group flex items-center gap-4 w-full text-left p-3 sm:p-4 rounded-2xl transition-all duration-500 ease-out border ${
+            isActive
+              ? 'bg-white/10 border-white/20 shadow-md scale-[1.02]'
+              : 'bg-transparent border-transparent hover:bg-white/5'
+          }`;
+          // Update title color
+          const h3 = t.querySelector('h3');
+          if (h3) {
+            h3.className = `font-display text-lg font-semibold transition-colors duration-500 ${
+              isActive ? 'text-white' : 'text-white/50 group-hover:text-white/80'
+            }`;
+          }
+          // Show/hide arrow
+          const arrow = t.querySelector('[data-forwho-arrow]');
+          if (arrow) {
+            arrow.classList.toggle('hidden', !isActive);
+          }
+        });
+
+        // Update panels
+        panels.forEach((panel) => {
+          const isActive = panel.dataset.forwhoPanel === targetId;
+          panel.classList.toggle('hidden', !isActive);
+          // Re-trigger animation
+          if (isActive) {
+            const content = panel.querySelector('.animate-fade-up');
+            if (content) {
+              content.classList.remove('animate-fade-up');
+              // Force reflow
+              void (content as HTMLElement).offsetWidth;
+              content.classList.add('animate-fade-up');
+            }
+          }
+        });
+      });
+    });
+  }
+
+  initForWhoTabs();
+  document.addEventListener('astro:page-load', initForWhoTabs);
+</script>

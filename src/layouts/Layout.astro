@@ -1,0 +1,176 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import MobileContactBar from '../components/MobileContactBar.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  noindex?: boolean;
+  image?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  noindex = false,
+  image = 'https://www.alligatorhideuy.com/og-image.jpg',
+} = Astro.props;
+
+const siteUrl = 'https://www.alligatorhideuy.com';
+const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={fullCanonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_UY" />
+    <meta property="og:url" content={fullCanonical} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="AlligatorHide Uruguay" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+    />
+
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5T53D583FQ" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5T53D583FQ', { send_page_view: false });
+    </script>
+
+    <!-- Schema.org Local Business -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "RoofingContractor",
+        "name": "AlligatorHide Uruguay",
+        "image": "https://www.alligatorhideuy.com/logo.png",
+        "description": "Sistema de impermeabilización premium con garantía de hasta 18 años. Techos, terrazas y superficies en Uruguay.",
+        "@id": "https://www.alligatorhideuy.com",
+        "url": "https://www.alligatorhideuy.com",
+        "telephone": "+59899229981",
+        "email": "info@alligatorhideuy.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "José Enrique Rodó 2082",
+          "addressLocality": "Montevideo",
+          "addressCountry": "UY"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -34.901112,
+          "longitude": -56.164532
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Montevideo" },
+          { "@type": "City", "name": "Maldonado" }
+        ],
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        },
+        "priceRange": "$$$"
+      }
+    </script>
+
+    <!-- View Transitions -->
+    <meta name="view-transition" content="same-origin" />
+  </head>
+
+  <body>
+    <!-- Skip to content (A11Y) -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-md focus:outline-none"
+    >
+      Ir al contenido principal
+    </a>
+
+    <Header />
+
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    <Footer />
+    <WhatsAppButton />
+    <MobileContactBar />
+
+    <!-- Analytics: track page views on navigation -->
+    <script is:inline>
+      function trackPageView() {
+        if (window.gtag) {
+          window.gtag('event', 'page_view', {
+            page_path: window.location.pathname,
+            page_title: document.title,
+          });
+        }
+      }
+      trackPageView();
+      document.addEventListener('astro:page-load', trackPageView);
+    </script>
+
+    <!-- Scroll animations -->
+    <script is:inline>
+      function initScrollAnimations() {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.scroll-animate:not(.is-visible)').forEach(function(el) {
+          observer.observe(el);
+        });
+      }
+      initScrollAnimations();
+      document.addEventListener('astro:page-load', initScrollAnimations);
+    </script>
+  </body>
+</html>

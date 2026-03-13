@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const values = [
+  {
+    title: 'Calidad garantizada',
+    description: 'Utilizamos únicamente productos de primera calidad importados de Estados Unidos, respaldados por garantía contractual.',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />`,
+  },
+  {
+    title: 'Servicio profesional',
+    description: 'Equipo técnico especializado con experiencia comprobada en impermeabilización de alta exigencia.',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />`,
+  },
+  {
+    title: 'Compromiso',
+    description: 'Seguimiento técnico durante toda la vida útil de la garantía, asegurando la satisfacción del cliente.',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />`,
+  },
+  {
+    title: 'Tecnología importada',
+    description: 'Sistema desarrollado y probado en Estados Unidos, con años de experiencia en el mercado norteamericano.',
+    icon: `<circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />`,
+  },
+];
+---
+
+<Layout
+  title="Quiénes Somos - AlligatorHide Uruguay"
+  description="Conozca la historia de AlligatorHide Uruguay: tecnología importada de EE.UU., años de experiencia en impermeabilización y nuestro compromiso con la calidad y la garantía."
+  canonical="/quienes-somos"
+>
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 bg-secondary pattern-crocodile">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <span class="inline-block text-primary-foreground text-sm font-semibold uppercase tracking-wider mb-4">
+          Nuestra historia
+        </span>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-secondary-foreground mb-6">
+          Quiénes somos
+        </h1>
+        <p class="text-xl text-secondary-foreground/70 leading-relaxed">
+          Conozca la historia detrás de AlligatorHide y nuestro compromiso con la calidad.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story Section -->
+  <section class="section-padding bg-background">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="scroll-animate">
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-foreground mb-6">
+            Experiencia que se traduce en resultados
+          </h2>
+          <div class="text-muted-foreground space-y-6 text-lg">
+            <p class="leading-relaxed">
+              Tras años de experiencia en el rubro constructivo norteamericano, con particular interés en techos, nuestro fundador desarrolló la combinación exacta de elementos que conforman este sistema impermeable, resistente y superflexible.
+            </p>
+            <p class="leading-relaxed">
+              Llegamos a Uruguay abocados en traer al país la propuesta de calidad y durabilidad que AlligatorHide ya ofrece en Estados Unidos. Allí, empresas, constructores, arquitectos y particulares nos eligen para impermeabilizar sus techos y otras superficies.
+            </p>
+            <p class="leading-relaxed">
+              Nuestro compromiso es brindar a cada cliente la misma calidad y servicio que nos ha distinguido en el mercado estadounidense, adaptado a las necesidades específicas del mercado uruguayo.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-muted rounded-2xl p-8 lg:p-10 scroll-animate delay-200">
+          <div class="grid grid-cols-2 gap-6">
+            <div class="bg-card rounded-xl p-6 text-center shadow-sm">
+              <div class="text-4xl font-display font-bold text-primary mb-2">18</div>
+              <p class="text-muted-foreground text-sm">Años de durabilidad comprobada</p>
+            </div>
+            <div class="bg-card rounded-xl p-6 text-center shadow-sm">
+              <div class="text-4xl font-display font-bold text-primary mb-2">EE.UU.</div>
+              <p class="text-muted-foreground text-sm">Origen del sistema</p>
+            </div>
+            <div class="bg-card rounded-xl p-6 text-center shadow-sm">
+              <div class="text-4xl font-display font-bold text-primary mb-2">+6</div>
+              <p class="text-muted-foreground text-sm">Años de extensión disponible</p>
+            </div>
+            <div class="bg-card rounded-xl p-6 text-center shadow-sm">
+              <div class="text-4xl font-display font-bold text-primary mb-2">100%</div>
+              <p class="text-muted-foreground text-sm">Compromiso con la calidad</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="section-padding bg-muted pattern-crocodile">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 scroll-animate">
+        <span class="inline-block text-primary text-sm font-semibold uppercase tracking-wider mb-4">
+          Lo que nos define
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          Nuestros valores
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {values.map((value, i) => (
+          <div class="card-premium p-6 text-center hover:-translate-y-1 scroll-animate" style={`transition-delay: ${(i + 1) * 100}ms`}>
+            <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+              <svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" set:html={value.icon} />
+            </div>
+            <h3 class="font-display text-lg font-semibold text-foreground mb-3">{value.title}</h3>
+            <p class="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="section-padding bg-background">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-secondary rounded-2xl p-8 lg:p-10 text-secondary-foreground scroll-animate">
+            <h3 class="font-display text-2xl font-bold mb-4">Nuestra misión</h3>
+            <p class="text-secondary-foreground/80 leading-relaxed">
+              Proporcionar soluciones de impermeabilización de la más alta calidad, respaldadas por garantía contractual y servicio técnico continuo, para proteger las propiedades de nuestros clientes de manera definitiva.
+            </p>
+          </div>
+          <div class="bg-primary rounded-2xl p-8 lg:p-10 text-primary-foreground scroll-animate delay-200">
+            <h3 class="font-display text-2xl font-bold mb-4">Nuestra visión</h3>
+            <p class="text-primary-foreground/80 leading-relaxed">
+              Ser la referencia en impermeabilización premium en Uruguay, reconocidos por la durabilidad de nuestro sistema, la calidad de nuestro servicio y el compromiso con cada proyecto.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
