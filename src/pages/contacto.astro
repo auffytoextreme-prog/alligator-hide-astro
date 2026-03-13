@@ -8,34 +8,51 @@ import ContactForm from '../components/react/ContactForm';
   description="Contacte a AlligatorHide Uruguay para impermeabilización profesional de techos y terrazas. Presupuesto sin costo, visita gratuita. Atendemos en Montevideo y todo Uruguay."
   canonical="/contacto"
 >
-  <!-- Hero Section -->
-  <section class="pt-32 pb-16 bg-secondary pattern-crocodile">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl">
-        <span class="inline-block text-primary-foreground/70 text-sm font-semibold uppercase tracking-wider mb-4">
-          Estamos para ayudarlo
-        </span>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl text-secondary-foreground mb-6">
+  <!-- Hero Section — dark gray -->
+  <section class="pt-32 pb-14 relative overflow-hidden bg-[#1a1a1a]">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-br from-[#1a1a1a] via-[#252525] to-[#1a1a1a]"></div>
+      <div class="absolute top-0 right-0 w-1/3 h-full opacity-[0.04] pattern-crocodile"></div>
+      <div class="absolute -top-20 -left-20 w-[500px] h-[500px] bg-[#D4A843]/12 rounded-full blur-[150px] animate-pulse-subtle"></div>
+      <div class="absolute bottom-0 right-0 w-[400px] h-[350px] bg-[#D4A843]/8 rounded-full blur-[130px]"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[200px] bg-[#D4A843]/[0.03] rounded-full blur-[100px]"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-4xl">
+        <h1 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-[1.05] tracking-tight animate-fade-up">
           Contáctenos
         </h1>
-        <p class="text-xl text-secondary-foreground/70 leading-relaxed">
-          Solicite su diagnóstico gratuito o programe una visita para ver un techo de muestra.
+        <p class="text-white/60 text-lg md:text-xl leading-relaxed max-w-3xl animate-fade-up" style="animation-delay: 200ms">
+          Solicite su diagnóstico gratuito, programe una visita para ver un techo de muestra o converse con uno de nuestros técnicos para evacuar cualquier consulta.
         </p>
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section class="section-padding bg-background">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="section-padding bg-background relative overflow-hidden">
+    <div class="absolute top-0 left-0 right-0 pointer-events-none z-10 leading-none -mt-px">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-10 lg:h-14 block">
+        <defs>
+          <linearGradient id="contact-wave" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#252525" />
+            <stop offset="100%" stop-color="#1a1a1a" />
+          </linearGradient>
+        </defs>
+        <path d="M0,30 C360,60 1080,0 1440,30 L1440,0 L0,0 Z" fill="url(#contact-wave)" />
+      </svg>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <ContactForm client:visible />
     </div>
   </section>
 
   <!-- Map -->
-  <section class="bg-background py-6">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-      <div class="rounded-xl overflow-hidden shadow-md">
+  <section class="bg-secondary py-12 relative">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl relative z-10">
+      <div class="rounded-2xl overflow-hidden shadow-lg ring-1 ring-white/10">
         <iframe
           src="https://maps.google.com/maps?q=Jose+Enrique+Rod%C3%B3+2082%2C+Montevideo%2C+Uruguay&z=16&output=embed"
           width="100%"
@@ -47,10 +64,11 @@ import ContactForm from '../components/react/ContactForm';
           title="Ubicación AlligatorHide Uruguay - José Enrique Rodó 2082, Montevideo"
         ></iframe>
       </div>
-      <p class="text-center text-muted-foreground text-sm mt-3 flex items-center justify-center gap-1">
+      <p class="text-center text-white/50 text-sm mt-3 flex items-center justify-center gap-1">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
         José Enrique Rodó 2082, Montevideo, Uruguay
       </p>
     </div>
+
   </section>
 </Layout>
