@@ -69,6 +69,18 @@
     @apply border-border;
   }
 
+  /* Eliminate sub-pixel gaps between sections */
+  section {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none;
+  }
+
+  main > section + section,
+  main > div + section {
+    margin-top: -2px;
+  }
+
   html {
     scroll-behavior: smooth;
   }
