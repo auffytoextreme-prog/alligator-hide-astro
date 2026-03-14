@@ -132,6 +132,7 @@ const galleryImages = [
             <button
               class={`relative flex-shrink-0 w-20 h-16 sm:w-24 sm:h-[72px] overflow-hidden rounded-xl cursor-pointer transition-all duration-300 ${index === 0 ? 'ring-2 ring-[#4CBFA6] shadow-lg shadow-[#4CBFA6]/20 opacity-100' : 'ring-1 ring-foreground/10 opacity-50 hover:opacity-80'}`}
               data-thumb={index}
+              aria-selected={index === 0 ? 'true' : 'false'}
             >
               <Image
                 src={image}
