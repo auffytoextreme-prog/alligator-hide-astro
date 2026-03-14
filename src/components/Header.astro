@@ -70,27 +70,30 @@ const currentPath = Astro.url.pathname;
 <!-- Mobile Side Panel -->
 <div
   id="mobile-menu"
-  class="fixed top-0 right-0 h-full w-72 bg-secondary z-[60] transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
+  class="fixed top-0 right-0 w-56 bg-gradient-to-br from-[#1f1f1f] via-[#1a1a1a] to-[#141414] rounded-bl-2xl z-[60] transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden shadow-2xl border-l border-b border-white/[0.06]"
 >
-  <div class="flex justify-end p-5">
-    <button id="mobile-menu-close" class="p-3 text-white/70 hover:text-white transition-colors" aria-label="Cerrar menú">
-      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <div class="flex items-center justify-between p-4 px-6">
+    <span class="text-xs font-semibold uppercase tracking-widest text-white/40">Menú</span>
+    <button id="mobile-menu-close" class="p-2 text-white/70 hover:text-white transition-colors" aria-label="Cerrar menú">
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
   </div>
-  <nav class="flex flex-col px-6 gap-1">
+  <nav class="flex flex-col px-6 pb-6 gap-1">
     {navigation.map((item) => (
       <a
         href={item.href}
         class:list={[
-          'mobile-nav-link text-base font-medium uppercase tracking-wide py-4 px-4 text-right rounded-lg transition-colors duration-200',
+          'mobile-nav-link text-sm font-medium uppercase tracking-wide py-3 px-3 text-right transition-colors duration-200',
           currentPath === item.href
-            ? 'text-primary bg-white/5'
-            : 'text-white/60 hover:text-white hover:bg-white/5',
+            ? 'text-white'
+            : 'text-white/60 hover:text-white',
         ]}
       >
-        {item.name}
+        <span class:list={[currentPath === item.href && 'underline underline-offset-4 decoration-2 decoration-white']}>
+          {item.name}
+        </span>
       </a>
     ))}
   </nav>
@@ -124,10 +127,8 @@ const currentPath = Astro.url.pathname;
       header.classList.remove('bg-transparent', 'backdrop-blur-[2px]', 'py-5');
       header.classList.add('bg-background/95', 'backdrop-blur-xl', 'shadow-sm', 'border-b', 'border-foreground/[0.06]', 'py-2');
 
-      if (!isMobile()) {
-        logoWhite.classList.add('hidden');
-        logoColor.classList.remove('hidden');
-      }
+      logoWhite.classList.add('hidden');
+      logoColor.classList.remove('hidden');
 
       btn.classList.remove('text-primary-foreground');
       btn.classList.add('text-foreground');

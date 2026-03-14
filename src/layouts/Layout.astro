@@ -2,7 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-import MobileContactBar from '../components/MobileContactBar.astro';
+
 import '../styles/global.css';
 
 interface Props {
@@ -140,8 +140,6 @@ const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
     </main>
 
     <Footer />
-
-    <MobileContactBar />
 
     <!-- Analytics: track page views on navigation -->
     <script is:inline>
