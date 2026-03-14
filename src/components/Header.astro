@@ -10,7 +10,8 @@ const navigation = [
   { name: 'Contacto', href: '/contacto' },
 ];
 
-const currentPath = Astro.url.pathname;
+const rawPath = Astro.url.pathname;
+const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
 ---
 
 <header
