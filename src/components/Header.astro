@@ -55,64 +55,80 @@ const currentPath = Astro.url.pathname;
       <!-- Mobile Menu Button -->
       <button
         id="mobile-menu-btn"
-        class="lg:hidden p-2.5 text-primary-foreground"
+        class="lg:hidden p-3 text-primary-foreground"
         aria-label="Abrir menú"
         aria-expanded="false"
       >
         <svg id="icon-menu" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
       </button>
     </div>
-
-    <!-- Mobile Navigation -->
-    <nav id="mobile-menu" class="lg:hidden hidden mt-4 pb-6 border-t border-border/20 pt-4 animate-fade-in">
-      <div class="flex flex-col gap-3">
-        {navigation.map((item) => (
-          <a
-            href={item.href}
-            class:list={[
-              'text-base font-medium uppercase tracking-wide py-3 transition-colors',
-              currentPath === item.href ? 'text-primary' : 'text-secondary hover:text-primary',
-            ]}
-          >
-            {item.name}
-          </a>
-        ))}
-      </div>
-    </nav>
   </div>
 </header>
 
+<!-- Mobile Side Panel -->
+<div
+  id="mobile-menu"
+  class="fixed top-0 right-0 h-full w-72 bg-secondary z-[60] transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
+>
+  <div class="flex justify-end p-5">
+    <button id="mobile-menu-close" class="p-3 text-white/70 hover:text-white transition-colors" aria-label="Cerrar menú">
+      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  <nav class="flex flex-col px-6 gap-1">
+    {navigation.map((item) => (
+      <a
+        href={item.href}
+        class:list={[
+          'mobile-nav-link text-base font-medium uppercase tracking-wide py-4 px-4 text-right rounded-lg transition-colors duration-200',
+          currentPath === item.href
+            ? 'text-primary bg-white/5'
+            : 'text-white/60 hover:text-white hover:bg-white/5',
+        ]}
+      >
+        {item.name}
+      </a>
+    ))}
+  </nav>
+</div>
+
 <!-- Mobile menu overlay -->
-<div id="mobile-overlay" class="fixed inset-0 z-40 bg-black/40 lg:hidden hidden transition-opacity"></div>
+<div id="mobile-overlay" class="fixed inset-0 z-[55] bg-black/50 backdrop-blur-sm lg:hidden hidden transition-opacity"></div>
 
 <script is:inline>
 (function() {
   var header = document.getElementById('site-header');
   var btn = document.getElementById('mobile-menu-btn');
   var menu = document.getElementById('mobile-menu');
+  var closeBtn = document.getElementById('mobile-menu-close');
   var overlay = document.getElementById('mobile-overlay');
   var logoWhite = document.getElementById('logo-white');
   var logoColor = document.getElementById('logo-color');
-  var iconMenu = document.getElementById('icon-menu');
-  var iconClose = document.getElementById('icon-close');
   var isOpen = false;
   var isScrolled = false;
 
+  function isMobile() {
+    return window.innerWidth < 1024;
+  }
+
   function updateHeader() {
     var scrolled = window.scrollY > 20;
-    if (scrolled === isScrolled && !isOpen) return;
+    if (scrolled === isScrolled) return;
     isScrolled = scrolled;
 
-    if (scrolled || isOpen) {
+    if (scrolled) {
       header.classList.remove('bg-transparent', 'backdrop-blur-[2px]', 'py-5');
       header.classList.add('bg-background/95', 'backdrop-blur-xl', 'shadow-sm', 'border-b', 'border-foreground/[0.06]', 'py-2');
-      logoWhite.classList.add('hidden');
-      logoColor.classList.remove('hidden');
+
+      if (!isMobile()) {
+        logoWhite.classList.add('hidden');
+        logoColor.classList.remove('hidden');
+      }
+
       btn.classList.remove('text-primary-foreground');
       btn.classList.add('text-foreground');
       document.querySelectorAll('.nav-link').forEach(function(el) {
@@ -143,25 +159,44 @@ const currentPath = Astro.url.pathname;
     }
   }
 
+  function openMenu() {
+    isOpen = true;
+    menu.classList.remove('translate-x-full');
+    menu.classList.add('translate-x-0');
+    overlay.classList.remove('hidden');
+    btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-label', 'Cerrar menú');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    menu.classList.add('translate-x-full');
+    menu.classList.remove('translate-x-0');
+    overlay.classList.add('hidden');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Abrir menú');
+    document.body.style.overflow = '';
+  }
+
   function toggleMenu() {
-    isOpen = !isOpen;
-    menu.classList.toggle('hidden');
-    overlay.classList.toggle('hidden');
-    iconMenu.classList.toggle('hidden');
-    iconClose.classList.toggle('hidden');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    btn.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-    updateHeader();
+    if (isOpen) closeMenu();
+    else openMenu();
   }
 
   btn.addEventListener('click', toggleMenu);
-  overlay.addEventListener('click', toggleMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
 
   menu.querySelectorAll('a').forEach(function(link) {
     link.addEventListener('click', function() {
-      if (isOpen) toggleMenu();
+      if (isOpen) closeMenu();
     });
+  });
+
+  window.addEventListener('resize', function() {
+    if (!isMobile() && isOpen) closeMenu();
+    updateHeader();
   });
 
   window.addEventListener('scroll', updateHeader, { passive: true });
