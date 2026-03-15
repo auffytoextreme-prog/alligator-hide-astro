@@ -36,16 +36,22 @@ export default function ContactForm() {
     setError('');
 
     try {
+      const extraDetails = [
+        `Email: ${formData.email}`,
+        formData.telefono ? `Teléfono: ${formData.telefono}` : '',
+        formData.zona ? `Zona: ${formData.zona}` : '',
+        formData.superficie ? `Superficie: ${formData.superficie}` : '',
+        formData.mensaje ? `\nMensaje: ${formData.mensaje}` : '',
+      ].filter(Boolean).join('\n');
+
       await emailjs.send(
         import.meta.env.PUBLIC_EMAILJS_SERVICE_ID,
         import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID,
         {
-          from_name: formData.nombre,
-          from_email: formData.email,
-          phone: formData.telefono,
-          zona: formData.zona,
-          superficie: formData.superficie,
-          message: formData.mensaje,
+          name: formData.nombre,
+          email: formData.email,
+          title: 'Solicitud de diagnóstico',
+          message: extraDetails,
         },
         import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY
       );
